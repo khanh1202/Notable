@@ -9,26 +9,48 @@
 import Foundation
 import Parse
 
-protocol AuthManagerDelegate {
+protocol AuthManagerLoginDelegate {
     func didLoginUser()
     func didFailLoginUser()
 }
 
+protocol AuthManagerSignupDelegate {
+    func didSignupUser()
+    func didFailSignupUser(message: String)
+}
+
 struct AuthManager {
-    var delegate: AuthManagerDelegate?
+    var loginDelegate: AuthManagerLoginDelegate?
+    var signupDelegate: AuthManagerSignupDelegate?
     
     func logInNewSession(username: String, password: String) {
         PFUser.logInWithUsername(inBackground: username, password: password) {
             (user, error) in
             if user != nil {
-                self.delegate?.didLoginUser()
+                self.loginDelegate?.didLoginUser()
             } else {
-                self.delegate?.didFailLoginUser()
+                self.loginDelegate?.didFailLoginUser()
             }
         }
     }
     
     func isReturningUser() -> Bool {
         return PFUser.current() != nil
+    }
+    
+    func signUpUser(_ username: String, _ displayName: String, _ email: String, _ password: String) {
+        let user = PFUser()
+        user.username = username
+        user.password = password
+        user.email = email
+        user[K.displayNameField] = displayName
+        
+        user.signUpInBackground { (succeeded, error) in
+            if succeeded {
+                self.signupDelegate?.didSignupUser()
+            } else {
+                self.signupDelegate?.didFailSignupUser(message: error!.localizedDescription)
+            }
+        }
     }
 }

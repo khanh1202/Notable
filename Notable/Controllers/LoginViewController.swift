@@ -17,14 +17,9 @@ class LoginViewController: UIViewController {
     var authManager = AuthManager()
     
     override func viewDidLoad() {
-        authManager.delegate = self
-        logInReturningUser()
-    }
-    
-    func logInReturningUser() {
-        if authManager.isReturningUser() {
-            print("User should be able to proceed")
-        }
+        authManager.loginDelegate = self
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     @IBAction func logInPressed(_ sender: UIButton) {
@@ -34,9 +29,14 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController: AuthManagerDelegate {
+extension LoginViewController: AuthManagerLoginDelegate {
     func didLoginUser() {
-        print("Login success")
+        let storyBoard = UIStoryboard(name: "Main", bundle: .main)
+        
+        if let initialialVC = storyBoard.instantiateInitialViewController() {
+            self.view.window?.rootViewController = initialialVC
+            self.view.window?.makeKeyAndVisible()
+        }
     }
     
     func didFailLoginUser() {
@@ -44,7 +44,16 @@ extension LoginViewController: AuthManagerDelegate {
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
     
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
 }
 
