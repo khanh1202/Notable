@@ -20,6 +20,7 @@
 		0454AA76247BCA45006B6F56 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AA75247BCA45006B6F56 /* SignupViewController.swift */; };
 		0454AA79247BCB70006B6F56 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AA78247BCB70006B6F56 /* SignupViewModel.swift */; };
 		0454AA7B247D0A35006B6F56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0454AA7A247D0A35006B6F56 /* Main.storyboard */; };
+		0454AA7D247E6274006B6F56 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AA7C247E6274006B6F56 /* ProfileViewController.swift */; };
 		3561686BCF01DE3FE2931B1C /* Pods_Notable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5736CD651FAD929E0A55757F /* Pods_Notable.framework */; };
 		D26DFBF8986418748E1A7CD9 /* Pods_NotableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		0454AA75247BCA45006B6F56 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		0454AA78247BCB70006B6F56 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		0454AA7A247D0A35006B6F56 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		0454AA7C247E6274006B6F56 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		272068D5FFCA98802C281274 /* Pods-NotableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotableTests.release.xcconfig"; path = "Target Support Files/Pods-NotableTests/Pods-NotableTests.release.xcconfig"; sourceTree = "<group>"; };
 		55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5736CD651FAD929E0A55757F /* Pods_Notable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +134,7 @@
 				0454AA6C247B685F006B6F56 /* PaddingTextField.swift */,
 				0454AA4E247A88C2006B6F56 /* LoginViewController.swift */,
 				0454AA75247BCA45006B6F56 /* SignupViewController.swift */,
+				0454AA7C247E6274006B6F56 /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				0454AA74247B70D2006B6F56 /* AuthManager.swift in Sources */,
 				0454AA4F247A88C2006B6F56 /* LoginViewController.swift in Sources */,
 				0454AA6D247B685F006B6F56 /* PaddingTextField.swift in Sources */,
+				0454AA7D247E6274006B6F56 /* ProfileViewController.swift in Sources */,
 				0454AA4B247A88C2006B6F56 /* AppDelegate.swift in Sources */,
 				0454AA4D247A88C2006B6F56 /* SceneDelegate.swift in Sources */,
 			);

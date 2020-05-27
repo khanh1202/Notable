@@ -53,4 +53,8 @@ struct AuthManager {
             }
         }
     }
+    
+    func logoutUser() {
+        PFUser.logOut()
+    }
 }
