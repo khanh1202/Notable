@@ -10,27 +10,13 @@ import UIKit
 
 class NotesDataSource: NSObject {
     var notes: [Note]
-    let noteManager: NoteManager
     let noteTableView: UITableView
-    let tableType: NoteTableType
     
-    init(for tableView: UITableView, type tableType: NoteTableType) {
-        notes = []
-        noteManager = NoteManager()
+    init(for tableView: UITableView, _ notes: [Note]) {
+        self.notes = notes
         noteTableView = tableView
-        self.tableType = tableType
-        
-        switch tableType {
-        case .ownedByUser:
-            noteManager.getNotesOwnedByUser()
-        case .sharedByUser:
-            noteManager.getNotesSharedByUser()
-        default:
-            noteManager.getNotesShareToUser()
-        }
-    }
-    
-    func registerCell()  {
+        super.init()
+        noteTableView.dataSource = self
         noteTableView.register(UINib(nibName: K.noteNibName, bundle: nil), forCellReuseIdentifier: K.noteCellIdentifier)
     }
 }
@@ -43,15 +29,8 @@ extension NotesDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.noteCellIdentifier, for: indexPath) as! NoteTableViewCell
         cell.note = notes[indexPath.row]
-        cell.tableType = self.tableType
+        cell.populateUI()
         return cell
     }
 }
 
-extension NotesDataSource: NoteManagerDelegate {
-    func didGetNotesFromServer(_ notes: [Note]) {
-        self.notes = notes
-        noteTableView.reloadData()
-    }
-    
-}

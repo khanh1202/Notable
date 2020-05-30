@@ -16,11 +16,20 @@ class NoteTableViewCell: UITableViewCell {
     @IBOutlet weak var authorLabel: UILabel!
     
     var note: Note?
-    var tableType: NoteTableType?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        populateUI()
+    }
+    
+    func populateUI() {
+        if let note = note {
+            noteTitleLabel.text = note.title
+            noteBriefLabel.text = note.content
+            dateCreatedLabel.text = note.createdAtTimeString
+            authorLabel.text = note.author![K.displayNameField] as? String
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

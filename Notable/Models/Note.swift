@@ -37,9 +37,21 @@ class Note: PFObject, PFSubclassing {
         }
     }
     
+    var createdAtTimeString: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E, d MMM yyyy HH:mm:ss"
+        return formatter.string(from: createdAtTime!)
+    }
+    
     var author: PFUser? {
         get {
-            return self[K.NoteFields.author] as? PFUser
+            do {
+                let user = self[K.NoteFields.author] as! PFUser
+                try user.fetch()
+                return user
+            } catch {
+                return nil
+            }
         }
         set {
             self[K.NoteFields.author] = newValue
