@@ -21,4 +21,10 @@ struct K {
         static let author = "author"
         static let sharedTo = "sharedTo"
     }
+    
+    struct Segues {
+        static let noteToEditor = "noteToEditor"
+        static let addToNoteEditor = "addToNoteEditor"
+        static let parentToChildNoteEditor = "parentToChildNoteEditor"
+    }
 }

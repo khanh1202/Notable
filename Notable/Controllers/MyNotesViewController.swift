@@ -36,21 +36,30 @@ class MyNotesViewController: UIViewController {
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        switch segue.identifier {
+        case K.Segues.addToNoteEditor:
+            let destinationVC = segue.destination as! MyNotesEditorViewController
+            destinationVC.mode = .adding
+        default:
+            let destinationVC = segue.destination as! MyNotesEditorViewController
+            destinationVC.note = datasource.selectedNote
+            destinationVC.mode = .editing
+        }
     }
-    */
 
 }
 
 extension MyNotesViewController: NoteManagerDelegate {
     func didGetNotesFromServer(_ notes: [Note]) {
         datasource = NotesDataSource(for: notesTableView, notes)
+        datasource.delegate = self
         datasource.noteTableView.reloadData()
+    }
+}
+
+extension MyNotesViewController: NotesDataSourceDelegate {
+    func didSelectRow() {
+        performSegue(withIdentifier: K.Segues.noteToEditor, sender: self)
     }
 }

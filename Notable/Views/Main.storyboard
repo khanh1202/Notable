@@ -7,6 +7,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Shared-->
+        <scene sceneID="TKk-P3-azT">
+            <objects>
+                <viewController id="r0h-Yy-x97" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E60-Ni-5S2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ZvJ-uO-ivW"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Shared" image="arrow.down.circle.fill" catalog="system" id="Gwj-cM-gEZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nDT-Tn-WGW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-891" y="368"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="BOM-U8-NNa">
             <objects>
@@ -115,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gw5-9x-1le" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="27.536231884057973" y="-43.526785714285715"/>
+            <point key="canvasLocation" x="28" y="7"/>
         </scene>
         <!--My Notes-->
         <scene sceneID="wQn-oR-9uv">
@@ -140,14 +156,148 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Sxi-5V-fOM"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My Notes" id="j35-cs-ee1"/>
+                    <navigationItem key="navigationItem" title="My Notes" id="j35-cs-ee1">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="RUB-hw-mYy">
+                                <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="CuA-mZ-iIk" kind="show" identifier="addToNoteEditor" id="723-5M-s1N"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="arrowshape.turn.up.right" catalog="system" id="bW3-Ur-m1Z">
+                                <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="notesTableView" destination="KUL-eU-Lp3" id="PWd-kx-arO"/>
+                        <segue destination="CuA-mZ-iIk" kind="show" identifier="noteToEditor" id="YLo-zD-mUV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EoU-iV-bQ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="937.68115942028987" y="-691.07142857142856"/>
+        </scene>
+        <!--My Notes Editor View Controller-->
+        <scene sceneID="vRQ-Rc-924">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="CuA-mZ-iIk" customClass="MyNotesEditorViewController" customModule="Notable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DIC-2N-4yj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Pg-A7-1rR">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="m3Z-d8-jHm" kind="embed" identifier="parentToChildNoteEditor" id="9L1-Ns-nXv"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="z3m-2p-LlX"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AZb-5Z-CnG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XJ3-tn-UEY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1798.5507246376812" y="-691.07142857142856"/>
+        </scene>
+        <!--Note Editor View Controller-->
+        <scene sceneID="PDO-Nx-NhC">
+            <objects>
+                <viewController id="m3Z-d8-jHm" customClass="NoteEditorViewController" customModule="Notable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Va2-Cs-6RI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="3OX-6h-ppA">
+                                <rect key="frame" x="0.0" y="44" width="414" height="681"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fkT-CP-GiD" customClass="PaddingTextField" customModule="Notable" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="WC4-S1-Ijv"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="40"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created: by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvo-pV-VYd">
+                                        <rect key="frame" x="0.0" y="94" width="414" height="21.5"/>
+                                        <fontDescription key="fontDescription" name="ArialHebrew-Light" family="Arial Hebrew" pointSize="20"/>
+                                        <color key="textColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Content..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gNF-iA-hyI">
+                                        <rect key="frame" x="10" y="129.5" width="394" height="551.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="nvo-pV-VYd" firstAttribute="leading" secondItem="3OX-6h-ppA" secondAttribute="leading" id="3cr-qi-WhH"/>
+                                    <constraint firstAttribute="trailing" secondItem="fkT-CP-GiD" secondAttribute="trailing" id="8ay-zY-ATX"/>
+                                    <constraint firstItem="gNF-iA-hyI" firstAttribute="leading" secondItem="3OX-6h-ppA" secondAttribute="leading" constant="10" id="Bk8-FZ-D20"/>
+                                    <constraint firstItem="fkT-CP-GiD" firstAttribute="leading" secondItem="3OX-6h-ppA" secondAttribute="leading" id="D4i-Yd-FJL"/>
+                                    <constraint firstAttribute="trailing" secondItem="gNF-iA-hyI" secondAttribute="trailing" constant="10" id="FGm-8w-dZI"/>
+                                    <constraint firstAttribute="bottom" secondItem="gNF-iA-hyI" secondAttribute="bottom" id="wmG-zF-9wS"/>
+                                    <constraint firstAttribute="trailing" secondItem="nvo-pV-VYd" secondAttribute="trailing" id="zML-tW-3po"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="3OX-6h-ppA" firstAttribute="leading" secondItem="hXc-Qi-DRD" secondAttribute="leading" id="4oD-6d-n6N"/>
+                            <constraint firstItem="3OX-6h-ppA" firstAttribute="top" secondItem="hXc-Qi-DRD" secondAttribute="top" id="ILr-a8-X7S"/>
+                            <constraint firstItem="hXc-Qi-DRD" firstAttribute="trailing" secondItem="3OX-6h-ppA" secondAttribute="trailing" id="JQo-PI-J2u"/>
+                            <constraint firstItem="hXc-Qi-DRD" firstAttribute="bottom" secondItem="3OX-6h-ppA" secondAttribute="bottom" id="NZ2-0Y-Xrm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hXc-Qi-DRD"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentTextView" destination="gNF-iA-hyI" id="c0z-tp-neQ"/>
+                        <outlet property="timeAndAuthorTextField" destination="nvo-pV-VYd" id="oLh-xu-iUf"/>
+                        <outlet property="titleTextField" destination="fkT-CP-GiD" id="ga1-wc-JrY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hga-gR-Ujg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2637.68115942029" y="-691.40625"/>
+        </scene>
+        <!--Contacts-->
+        <scene sceneID="6dp-9M-44d">
+            <objects>
+                <viewController id="5NC-mZ-6I9" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KU6-fU-rAN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="jKT-fD-7UE"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Contacts" image="person.2.fill" catalog="system" id="coE-ll-8Rq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vqS-Bm-Dwp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1871" y="-692"/>
+        </scene>
+        <!--Sharing-->
+        <scene sceneID="Gbu-P0-LWX">
+            <objects>
+                <viewController id="Hte-Mf-9HW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q9m-Xc-qo1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="KbQ-0h-LVk"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Sharing" image="arrowshape.turn.up.right.fill" catalog="system" id="v4c-ez-OoG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AZX-Z2-bah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1871" y="7"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Mcr-PM-eME">
@@ -160,6 +310,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="YWM-5m-yRS" kind="relationship" relationship="viewControllers" id="Ibe-QR-3Fv"/>
+                        <segue destination="5NC-mZ-6I9" kind="relationship" relationship="viewControllers" id="Fot-YL-S3K"/>
+                        <segue destination="Hte-Mf-9HW" kind="relationship" relationship="viewControllers" id="UqE-LE-dYT"/>
+                        <segue destination="r0h-Yy-x97" kind="relationship" relationship="viewControllers" id="zC6-1q-MBb"/>
                         <segue destination="vMG-Z7-qdU" kind="relationship" relationship="viewControllers" id="oTV-yg-CDw"/>
                     </connections>
                 </tabBarController>
@@ -188,10 +341,17 @@
             <point key="canvasLocation" x="27.536231884057973" y="-691.07142857142856"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="723-5M-s1N"/>
+    </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
+        <image name="arrowshape.turn.up.right.fill" catalog="system" width="128" height="106"/>
         <image name="doc.fill" catalog="system" width="115" height="128"/>
         <image name="envelope" catalog="system" width="128" height="93"/>
         <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
