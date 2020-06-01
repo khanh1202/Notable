@@ -12,6 +12,7 @@ class MyNotesEditorViewController: UIViewController {
 
     var note: Note?
     var mode = NoteEditorMode.viewing
+    var noteEditorController: NoteEditorViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +20,15 @@ class MyNotesEditorViewController: UIViewController {
         
     }
     
+    @IBAction func savePressed(_ sender: UIBarButtonItem) {
+        noteEditorController.saveNote()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segues.parentToChildNoteEditor {
-            let destinationVC = segue.destination as! NoteEditorViewController
-            destinationVC.note = note
-            destinationVC.mode = mode
+            noteEditorController = segue.destination as? NoteEditorViewController
+            noteEditorController.note = note
+            noteEditorController.mode = mode
         }
     }
 

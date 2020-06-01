@@ -27,4 +27,14 @@ struct K {
         static let addToNoteEditor = "addToNoteEditor"
         static let parentToChildNoteEditor = "parentToChildNoteEditor"
     }
+    
+    struct Images {
+        static let trash = "trash"
+        static let plus = "plus"
+    }
+    
+    struct Toast {
+        static let successfulDeleteMessage = "Notes deleted successfully"
+        static let selectNotePrompt = "Please select a note"
+    }
 }

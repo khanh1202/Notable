@@ -24,12 +24,14 @@ class NoteTableViewCell: UITableViewCell {
     }
     
     func populateUI() {
-        if let note = note {
-            noteTitleLabel.text = note.title
-            noteBriefLabel.text = note.content
-            dateCreatedLabel.text = note.createdAtTimeString
-            authorLabel.text = note.author![K.displayNameField] as? String
+        guard let note = note else {
+            return
         }
+        
+        noteTitleLabel.text = note.title
+        noteBriefLabel.text = note.content
+        dateCreatedLabel.text = note.createdAtTimeString
+        authorLabel.text = note.author![K.displayNameField] as? String
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

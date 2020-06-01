@@ -8,14 +8,9 @@
 
 import UIKit
 
-protocol NotesDataSourceDelegate {
-    func didSelectRow()
-}
-
 class NotesDataSource: NSObject {
-    var notes: [Note]
-    let noteTableView: UITableView
-    var delegate: NotesDataSourceDelegate?
+    private var notes: [Note]
+    private let noteTableView: UITableView
     var selectedNote: Note? {
         if let selectedIndex = noteTableView.indexPathForSelectedRow?.row {
             return notes[selectedIndex]
@@ -29,9 +24,17 @@ class NotesDataSource: NSObject {
         noteTableView = tableView
         super.init()
         noteTableView.dataSource = self
-        noteTableView.delegate = self
         noteTableView.register(UINib(nibName: K.noteNibName, bundle: nil), forCellReuseIdentifier: K.noteCellIdentifier)
     }
+    
+    func getNote(at index: Int) -> Note? {
+        guard index >= 0 && index < notes.count else {
+            return nil
+        }
+        
+        return notes[index]
+    }
+    
 }
 
 extension NotesDataSource: UITableViewDataSource {
@@ -44,12 +47,6 @@ extension NotesDataSource: UITableViewDataSource {
         cell.note = notes[indexPath.row]
         cell.populateUI()
         return cell
-    }
-}
-
-extension NotesDataSource: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didSelectRow()
     }
 }
 

@@ -12,28 +12,64 @@ import Parse
 class MyNotesViewController: UIViewController {
 
     @IBOutlet weak var notesTableView: UITableView!
-    var datasource: NotesDataSource!
-    var noteManager = NoteManager()
+    @IBOutlet weak var shareBarItem: UIBarButtonItem!
+    @IBOutlet weak var leftBarItem: UIBarButtonItem!
+    @IBOutlet weak var rightBarItem: UIBarButtonItem!
+    private var datasource: NotesDataSource!
+    private var noteManager = NoteManager()
+    private var selectedNotes: [Note] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        testOneSimpleNote()
         noteManager.delegate = self
+        notesTableView.delegate = self
+        updateBarItems()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         noteManager.getNotesOwnedByUser()
     }
     
-    func testOneSimpleNote() {
-        let note = Note()
-        note.title = "One experience"
-        note.content = "Today i have a dream"
-        note.author = PFUser.current()
-        note.createdAtTime = Date()
+    @objc func addExecute() {
+        performSegue(withIdentifier: K.Segues.addToNoteEditor, sender: self)
+    }
+    
+    @IBAction func editCancelExecute(_ sender: Any) {
+        toggleEditMode()
+    }
+    
+    func toggleEditMode() {
+        notesTableView.setEditing(!notesTableView.isEditing, animated: true)
         
-        note.saveInBackground { (success, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            }
+        updateBarItems()
+        selectedNotes = []
+    }
+    
+    func updateBarItems() {
+        let editing = notesTableView.isEditing
+        rightBarItem.target = self
+
+        leftBarItem.title = editing ? "Cancel" : "Edit"
+        rightBarItem.image = editing ? UIImage(systemName: K.Images.trash) : UIImage(systemName: K.Images.plus)
+        rightBarItem.action = editing ? #selector(self.deleteExecute) : #selector(self.addExecute)
+        shareBarItem.isEnabled = editing
+    }
+    
+    @IBAction func shareExecute(_ sender: Any) {
+    }
+    
+    @objc func deleteExecute() {
+        guard notesTableView.isEditing else {
+            return
         }
+        
+        guard selectedNotes.count > 0 else {
+            showToast(message: K.Toast.selectNotePrompt, font: UIFont.systemFont(ofSize: 15))
+            return
+        }
+        
+        noteManager.deleteNotes(notes: selectedNotes)
+        toggleEditMode()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,13 +89,40 @@ class MyNotesViewController: UIViewController {
 extension MyNotesViewController: NoteManagerDelegate {
     func didGetNotesFromServer(_ notes: [Note]) {
         datasource = NotesDataSource(for: notesTableView, notes)
-        datasource.delegate = self
-        datasource.noteTableView.reloadData()
+        notesTableView.reloadData()
+    }
+    
+    func didFinishDeletingNotes() {
+        noteManager.getNotesOwnedByUser()
+        showToast(message: K.Toast.successfulDeleteMessage, font: UIFont.systemFont(ofSize: 15))
     }
 }
 
-extension MyNotesViewController: NotesDataSourceDelegate {
-    func didSelectRow() {
-        performSegue(withIdentifier: K.Segues.noteToEditor, sender: self)
+extension MyNotesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let selectedNote = datasource.getNote(at: indexPath.row) else {
+            return
+        }
+        
+        if !tableView.isEditing {
+            performSegue(withIdentifier: K.Segues.noteToEditor, sender: self)
+            tableView.deselectRow(at: indexPath, animated: true)
+        } else {
+            selectedNotes.append(selectedNote)
+        }
     }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard tableView.isEditing else {
+            return
+        }
+        
+        guard let deselectedNote = datasource.getNote(at: indexPath.row), let deselectedIndex = selectedNotes.firstIndex(of: deselectedNote) else {
+            return
+        }
+        
+        selectedNotes.remove(at: deselectedIndex)
+    }
+
 }
+

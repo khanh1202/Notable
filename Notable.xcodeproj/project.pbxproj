@@ -30,6 +30,7 @@
 		0454AA9024826B42006B6F56 /* NoteEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AA8F24826B42006B6F56 /* NoteEditorViewController.swift */; };
 		0454AA9224828808006B6F56 /* NoteEditorMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AA9124828808006B6F56 /* NoteEditorMode.swift */; };
 		0454AA9424828C28006B6F56 /* MyNotesEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AA9324828C28006B6F56 /* MyNotesEditorViewController.swift */; };
+		0454AA962483C339006B6F56 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AA952483C339006B6F56 /* UIViewControllerExtension.swift */; };
 		3561686BCF01DE3FE2931B1C /* Pods_Notable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5736CD651FAD929E0A55757F /* Pods_Notable.framework */; };
 		D26DFBF8986418748E1A7CD9 /* Pods_NotableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		0454AA8F24826B42006B6F56 /* NoteEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorViewController.swift; sourceTree = "<group>"; };
 		0454AA9124828808006B6F56 /* NoteEditorMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorMode.swift; sourceTree = "<group>"; };
 		0454AA9324828C28006B6F56 /* MyNotesEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesEditorViewController.swift; sourceTree = "<group>"; };
+		0454AA952483C339006B6F56 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		272068D5FFCA98802C281274 /* Pods-NotableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotableTests.release.xcconfig"; path = "Target Support Files/Pods-NotableTests/Pods-NotableTests.release.xcconfig"; sourceTree = "<group>"; };
 		55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5736CD651FAD929E0A55757F /* Pods_Notable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +160,7 @@
 				0454AA8D24810D36006B6F56 /* MyNotesViewController.swift */,
 				0454AA8F24826B42006B6F56 /* NoteEditorViewController.swift */,
 				0454AA9324828C28006B6F56 /* MyNotesEditorViewController.swift */,
+				0454AA952483C339006B6F56 /* UIViewControllerExtension.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 			files = (
 				0454AA6F247B6F1A006B6F56 /* Constants.swift in Sources */,
 				0454AA9224828808006B6F56 /* NoteEditorMode.swift in Sources */,
+				0454AA962483C339006B6F56 /* UIViewControllerExtension.swift in Sources */,
 				0454AA76247BCA45006B6F56 /* SignupViewController.swift in Sources */,
 				0454AA79247BCB70006B6F56 /* SignupViewModel.swift in Sources */,
 				0454AA80247EA317006B6F56 /* NoteTableViewCell.swift in Sources */,

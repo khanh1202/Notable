@@ -141,7 +141,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="KUL-eU-Lp3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="KUL-eU-Lp3">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.92941176469999998" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -157,21 +157,31 @@
                         <viewLayoutGuide key="safeArea" id="Sxi-5V-fOM"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Notes" id="j35-cs-ee1">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="aAS-ab-0wc">
+                            <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="editCancelExecute:" destination="3WY-pa-dnx" id="H3e-iD-tHc"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="RUB-hw-mYy">
+                            <barButtonItem title="Item" id="RUB-hw-mYy">
                                 <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <segue destination="CuA-mZ-iIk" kind="show" identifier="addToNoteEditor" id="723-5M-s1N"/>
-                                </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" image="arrowshape.turn.up.right" catalog="system" id="bW3-Ur-m1Z">
                                 <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="shareExecute:" destination="3WY-pa-dnx" id="CKO-rN-arX"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="leftBarItem" destination="aAS-ab-0wc" id="kHr-2g-WX8"/>
                         <outlet property="notesTableView" destination="KUL-eU-Lp3" id="PWd-kx-arO"/>
+                        <outlet property="rightBarItem" destination="RUB-hw-mYy" id="rcc-9k-GIK"/>
+                        <outlet property="shareBarItem" destination="bW3-Ur-m1Z" id="lvz-s6-wDh"/>
                         <segue destination="CuA-mZ-iIk" kind="show" identifier="noteToEditor" id="YLo-zD-mUV"/>
+                        <segue destination="CuA-mZ-iIk" kind="show" identifier="addToNoteEditor" id="Fof-k7-rdO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EoU-iV-bQ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -197,7 +207,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="z3m-2p-LlX"/>
                     </view>
-                    <navigationItem key="navigationItem" id="AZb-5Z-CnG"/>
+                    <navigationItem key="navigationItem" id="AZb-5Z-CnG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="fZA-4w-hxb">
+                            <connections>
+                                <action selector="savePressed:" destination="CuA-mZ-iIk" id="jri-40-wSF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJ3-tn-UEY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -342,7 +358,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="723-5M-s1N"/>
+        <segue reference="YLo-zD-mUV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>

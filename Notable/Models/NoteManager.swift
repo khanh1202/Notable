@@ -11,52 +11,100 @@ import Parse
 
 protocol NoteManagerDelegate {
     func didGetNotesFromServer(_ notes: [Note])
+    func didFinishSaveNote()
+    func didFinishDeletingNotes()
+}
+
+extension NoteManagerDelegate {
+    func didGetNotesFromServer(_ notes: [Note]) {}
+    func didFinishSaveNote() {}
+    func didFinishDeletingNotes() {}
 }
 
 struct NoteManager {
     var delegate: NoteManagerDelegate?
     
     func getNotesOwnedByUser() {
+        guard let user = PFUser.current() else {
+            return
+        }
+        
         let query = PFQuery(className: Note.parseClassName())
-        if let user = PFUser.current() {
-            query.whereKey(K.NoteFields.author, equalTo: user)
-            
-            query.findObjectsInBackground { (notes, error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else if let notes = notes as? [Note] {
-                    self.delegate?.didGetNotesFromServer(notes)
-                }
+        query.whereKey(K.NoteFields.author, equalTo: user)
+        
+        query.findObjectsInBackground { (notes, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let notes = notes as? [Note] {
+                self.delegate?.didGetNotesFromServer(notes)
             }
         }
     }
     
     func getNotesSharedByUser() {
-        let noteQuery = PFQuery(className: Note.parseClassName())
-        if let user = PFUser.current() {
-            noteQuery.whereKeyExists(K.NoteFields.sharedTo).whereKey(K.NoteFields.author, equalTo: user)
-            
-            noteQuery.findObjectsInBackground { (notes, error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else if let notes = notes as? [Note] {
-                    self.delegate?.didGetNotesFromServer(notes)
-                }
-            }
+        guard let user = PFUser.current() else {
+            return
         }
-    }
-    
-    func getNotesShareToUser() {
+        
         let noteQuery = PFQuery(className: Note.parseClassName())
-        if let user = PFUser.current() {
-            noteQuery.whereKey("sharedTo", containsAllObjectsIn: [user])
-        }
+        noteQuery.whereKeyExists(K.NoteFields.sharedTo).whereKey(K.NoteFields.author, equalTo: user)
         
         noteQuery.findObjectsInBackground { (notes, error) in
             if let error = error {
                 print(error.localizedDescription)
             } else if let notes = notes as? [Note] {
                 self.delegate?.didGetNotesFromServer(notes)
+            }
+        }
+    }
+    
+    func getNotesShareToUser() {
+        guard let user = PFUser.current() else {
+            return
+        }
+        
+        let noteQuery = PFQuery(className: Note.parseClassName()).whereKey(K.NoteFields.sharedTo, containsAllObjectsIn: [user])
+        
+        noteQuery.findObjectsInBackground { (notes, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let notes = notes as? [Note] {
+                self.delegate?.didGetNotesFromServer(notes)
+            }
+        }
+    }
+    
+    func prepareNoteAndSave(existingNote: Note?, newTitle: String?, newContent: String?) {
+        if let existingNote = existingNote {
+            existingNote.title = newTitle
+            existingNote.content = newContent
+            saveNote(note: existingNote)
+        } else {
+            let newNote = Note()
+            newNote.title = newTitle
+            newNote.content = newContent
+            newNote.createdAtTime = Date()
+            newNote.author = PFUser.current()
+            saveNote(note: newNote)
+        }
+    }
+    
+    func deleteNotes(notes: [Note]) {
+        PFObject.deleteAll(inBackground: notes) { (suceeded, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                self.delegate?.didFinishDeletingNotes()
+            }
+        }
+    }
+    
+    private func saveNote(note: Note) {
+        note.saveInBackground { (succeeded, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                self.delegate?.didFinishSaveNote()
             }
         }
     }
