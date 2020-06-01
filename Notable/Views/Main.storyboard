@@ -186,14 +186,6 @@
             </objects>
             <point key="canvasLocation" x="-891" y="-367"/>
         </scene>
-        <!--NoteEditor-->
-        <scene sceneID="YzT-HZ-8Cg">
-            <objects>
-                <viewControllerPlaceholder storyboardName="NoteEditor" id="Z7E-vy-k25" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LLM-lc-zg7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2637.68115942029" y="-691.40625"/>
-        </scene>
         <!--MyNotes-->
         <scene sceneID="cIL-u4-QYn">
             <objects>
