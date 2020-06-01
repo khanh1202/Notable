@@ -33,8 +33,16 @@ struct K {
         static let plus = "plus"
     }
     
-    struct Toast {
-        static let successfulDeleteMessage = "Notes deleted successfully"
-        static let selectNotePrompt = "Please select a note"
+    struct Messages {
+        static let successfulDelete = "Notes deleted successfully"
+        static let selectNote = "Please select a note"
+        static let confirmShort = "Are you sure?"
+        static let confirmDeleteLong = "Are you sure want to delete notes?"
+    }
+    
+    struct Options {
+        static let cancel = "Cancel"
+        static let edit = "Edit"
+        static let delete = "Delete"
     }
 }

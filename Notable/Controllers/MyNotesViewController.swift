@@ -49,7 +49,7 @@ class MyNotesViewController: UIViewController {
         let editing = notesTableView.isEditing
         rightBarItem.target = self
 
-        leftBarItem.title = editing ? "Cancel" : "Edit"
+        leftBarItem.title = editing ? K.Options.cancel : K.Options.edit
         rightBarItem.image = editing ? UIImage(systemName: K.Images.trash) : UIImage(systemName: K.Images.plus)
         rightBarItem.action = editing ? #selector(self.deleteExecute) : #selector(self.addExecute)
         shareBarItem.isEnabled = editing
@@ -64,12 +64,20 @@ class MyNotesViewController: UIViewController {
         }
         
         guard selectedNotes.count > 0 else {
-            showToast(message: K.Toast.selectNotePrompt, font: UIFont.systemFont(ofSize: 15))
+            showToast(message: K.Messages.selectNote, font: UIFont.systemFont(ofSize: 15))
             return
         }
         
-        noteManager.deleteNotes(notes: selectedNotes)
-        toggleEditMode()
+        // TODO: if time is available, refactor the below to a utility method to display alert
+        let deleteAlert = UIAlertController(title: K.Messages.confirmShort, message: K.Messages.confirmDeleteLong, preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: K.Options.delete, style: .destructive) { (action) in
+            self.noteManager.deleteNotes(notes: self.selectedNotes)
+            self.toggleEditMode()
+        }
+        let cancelAction = UIAlertAction(title: K.Options.cancel, style: .cancel, handler: nil)
+        deleteAlert.addAction(deleteAction)
+        deleteAlert.addAction(cancelAction)
+        present(deleteAlert, animated: true, completion: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -94,7 +102,7 @@ extension MyNotesViewController: NoteManagerDelegate {
     
     func didFinishDeletingNotes() {
         noteManager.getNotesOwnedByUser()
-        showToast(message: K.Toast.successfulDeleteMessage, font: UIFont.systemFont(ofSize: 15))
+        showToast(message: K.Messages.successfulDelete, font: UIFont.systemFont(ofSize: 15))
     }
 }
 
