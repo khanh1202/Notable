@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m3Z-d8-jHm">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Note Editor View Controller-->
+        <scene sceneID="PDO-Nx-NhC">
+            <objects>
+                <viewController id="m3Z-d8-jHm" customClass="NoteEditorViewController" customModule="Notable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Va2-Cs-6RI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="3OX-6h-ppA">
+                                <rect key="frame" x="0.0" y="44" width="414" height="681"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fkT-CP-GiD" customClass="PaddingTextField" customModule="Notable" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="WC4-S1-Ijv"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="40"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created: by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvo-pV-VYd">
+                                        <rect key="frame" x="0.0" y="94" width="414" height="21.5"/>
+                                        <fontDescription key="fontDescription" name="ArialHebrew-Light" family="Arial Hebrew" pointSize="20"/>
+                                        <color key="textColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Content..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gNF-iA-hyI">
+                                        <rect key="frame" x="10" y="129.5" width="394" height="551.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="nvo-pV-VYd" firstAttribute="leading" secondItem="3OX-6h-ppA" secondAttribute="leading" id="3cr-qi-WhH"/>
+                                    <constraint firstAttribute="trailing" secondItem="fkT-CP-GiD" secondAttribute="trailing" id="8ay-zY-ATX"/>
+                                    <constraint firstItem="gNF-iA-hyI" firstAttribute="leading" secondItem="3OX-6h-ppA" secondAttribute="leading" constant="10" id="Bk8-FZ-D20"/>
+                                    <constraint firstItem="fkT-CP-GiD" firstAttribute="leading" secondItem="3OX-6h-ppA" secondAttribute="leading" id="D4i-Yd-FJL"/>
+                                    <constraint firstAttribute="trailing" secondItem="gNF-iA-hyI" secondAttribute="trailing" constant="10" id="FGm-8w-dZI"/>
+                                    <constraint firstAttribute="bottom" secondItem="gNF-iA-hyI" secondAttribute="bottom" id="wmG-zF-9wS"/>
+                                    <constraint firstAttribute="trailing" secondItem="nvo-pV-VYd" secondAttribute="trailing" id="zML-tW-3po"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="3OX-6h-ppA" firstAttribute="leading" secondItem="hXc-Qi-DRD" secondAttribute="leading" id="4oD-6d-n6N"/>
+                            <constraint firstItem="3OX-6h-ppA" firstAttribute="top" secondItem="hXc-Qi-DRD" secondAttribute="top" id="ILr-a8-X7S"/>
+                            <constraint firstItem="hXc-Qi-DRD" firstAttribute="trailing" secondItem="3OX-6h-ppA" secondAttribute="trailing" id="JQo-PI-J2u"/>
+                            <constraint firstItem="hXc-Qi-DRD" firstAttribute="bottom" secondItem="3OX-6h-ppA" secondAttribute="bottom" id="NZ2-0Y-Xrm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hXc-Qi-DRD"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentTextView" destination="gNF-iA-hyI" id="c0z-tp-neQ"/>
+                        <outlet property="timeAndAuthorTextField" destination="nvo-pV-VYd" id="oLh-xu-iUf"/>
+                        <outlet property="titleTextField" destination="fkT-CP-GiD" id="ga1-wc-JrY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hga-gR-Ujg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2637.68115942029" y="-691.40625"/>
+        </scene>
+    </scenes>
+</document>

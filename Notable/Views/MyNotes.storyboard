@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YWM-5m-yRS">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My Notes-->
+        <scene sceneID="wQn-oR-9uv">
+            <objects>
+                <viewController id="3WY-pa-dnx" customClass="MyNotesViewController" customModule="Notable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CTH-2k-b5t">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="KUL-eU-Lp3">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.92941176469999998" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="KUL-eU-Lp3" firstAttribute="trailing" secondItem="Sxi-5V-fOM" secondAttribute="trailing" id="6my-AM-m2U"/>
+                            <constraint firstItem="KUL-eU-Lp3" firstAttribute="leading" secondItem="Sxi-5V-fOM" secondAttribute="leading" id="gtW-Iq-MZU"/>
+                            <constraint firstItem="KUL-eU-Lp3" firstAttribute="top" secondItem="Sxi-5V-fOM" secondAttribute="top" id="sBe-DR-1zm"/>
+                            <constraint firstItem="KUL-eU-Lp3" firstAttribute="bottom" secondItem="Sxi-5V-fOM" secondAttribute="bottom" id="sWR-hb-ztp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Sxi-5V-fOM"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="My Notes" id="j35-cs-ee1">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="aAS-ab-0wc">
+                            <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="editCancelExecute:" destination="3WY-pa-dnx" id="H3e-iD-tHc"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" id="RUB-hw-mYy">
+                                <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="arrowshape.turn.up.right" catalog="system" id="bW3-Ur-m1Z">
+                                <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="shareExecute:" destination="3WY-pa-dnx" id="CKO-rN-arX"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="leftBarItem" destination="aAS-ab-0wc" id="kHr-2g-WX8"/>
+                        <outlet property="notesTableView" destination="KUL-eU-Lp3" id="PWd-kx-arO"/>
+                        <outlet property="rightBarItem" destination="RUB-hw-mYy" id="rcc-9k-GIK"/>
+                        <outlet property="shareBarItem" destination="bW3-Ur-m1Z" id="lvz-s6-wDh"/>
+                        <segue destination="CuA-mZ-iIk" kind="show" identifier="noteToEditor" id="YLo-zD-mUV"/>
+                        <segue destination="CuA-mZ-iIk" kind="show" identifier="addToNoteEditor" id="Fof-k7-rdO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EoU-iV-bQ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="937.68115942028987" y="-691.07142857142856"/>
+        </scene>
+        <!--My Notes Editor View Controller-->
+        <scene sceneID="vRQ-Rc-924">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="CuA-mZ-iIk" customClass="MyNotesEditorViewController" customModule="Notable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DIC-2N-4yj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Pg-A7-1rR">
+                                <rect key="frame" x="0.0" y="-208" width="600" height="725"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="Z7E-vy-k25" kind="embed" identifier="parentToChildNoteEditor" id="9L1-Ns-nXv"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="z3m-2p-LlX"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AZb-5Z-CnG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="fZA-4w-hxb">
+                            <connections>
+                                <action selector="savePressed:" destination="CuA-mZ-iIk" id="jri-40-wSF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XJ3-tn-UEY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1798.5507246376812" y="-691.07142857142856"/>
+        </scene>
+        <!--My Notes-->
+        <scene sceneID="P7O-eb-YzQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YWM-5m-yRS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Notes" image="doc.fill" catalog="system" id="cOW-LU-C9z"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="9zA-kX-lwZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.59999999999999998" green="0.92941176469999998" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3WY-pa-dnx" kind="relationship" relationship="rootViewController" id="cTk-xb-I93"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o6b-CJ-12O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="27.536231884057973" y="-691.07142857142856"/>
+        </scene>
+        <!--NoteEditor-->
+        <scene sceneID="YzT-HZ-8Cg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NoteEditor" id="Z7E-vy-k25" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LLM-lc-zg7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2637.68115942029" y="-691.40625"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="YLo-zD-mUV"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
+        <image name="doc.fill" catalog="system" width="115" height="128"/>
+    </resources>
+</document>
