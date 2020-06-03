@@ -131,23 +131,51 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gw5-9x-1le" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28" y="7"/>
+            <point key="canvasLocation" x="938" y="40"/>
         </scene>
-        <!--Contacts-->
+        <!--My Contacts-->
         <scene sceneID="6dp-9M-44d">
             <objects>
-                <viewController id="5NC-mZ-6I9" sceneMemberID="viewController">
+                <viewController id="5NC-mZ-6I9" customClass="MyContactsViewController" customModule="Notable" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KU6-fU-rAN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="h7d-Xr-YF0">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.92941176469999998" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="jKT-fD-7UE" firstAttribute="trailing" secondItem="h7d-Xr-YF0" secondAttribute="trailing" id="JXw-hy-Ow7"/>
+                            <constraint firstItem="h7d-Xr-YF0" firstAttribute="leading" secondItem="jKT-fD-7UE" secondAttribute="leading" id="Zok-uL-oJs"/>
+                            <constraint firstItem="h7d-Xr-YF0" firstAttribute="top" secondItem="jKT-fD-7UE" secondAttribute="top" id="glF-zV-MGn"/>
+                            <constraint firstItem="jKT-fD-7UE" firstAttribute="bottom" secondItem="h7d-Xr-YF0" secondAttribute="bottom" id="ihf-4B-SBa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="jKT-fD-7UE"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Contacts" image="person.2.fill" catalog="system" id="coE-ll-8Rq"/>
+                    <navigationItem key="navigationItem" title="My Contacts" id="c3i-lj-Idm">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="mNK-hW-Xbb">
+                            <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="editCancelExecute:" destination="5NC-mZ-6I9" id="XNm-iL-uRv"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="M4q-Kx-i0L">
+                            <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addDeleteItem" destination="M4q-Kx-i0L" id="PA0-NT-JqN"/>
+                        <outlet property="contactTableView" destination="h7d-Xr-YF0" id="Dqw-sP-gaZ"/>
+                        <outlet property="editCancelItem" destination="mNK-hW-Xbb" id="YwD-9C-ukY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vqS-Bm-Dwp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1871" y="-692"/>
+            <point key="canvasLocation" x="-1651" y="-691"/>
         </scene>
         <!--Sharing-->
         <scene sceneID="Gbu-P0-LWX">
@@ -176,7 +204,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="2jh-Bx-4SK" kind="relationship" relationship="viewControllers" id="Ibe-QR-3Fv"/>
-                        <segue destination="5NC-mZ-6I9" kind="relationship" relationship="viewControllers" id="Fot-YL-S3K"/>
+                        <segue destination="keL-ji-Tw7" kind="relationship" relationship="viewControllers" id="Fot-YL-S3K"/>
                         <segue destination="Hte-Mf-9HW" kind="relationship" relationship="viewControllers" id="UqE-LE-dYT"/>
                         <segue destination="r0h-Yy-x97" kind="relationship" relationship="viewControllers" id="zC6-1q-MBb"/>
                         <segue destination="vMG-Z7-qdU" kind="relationship" relationship="viewControllers" id="oTV-yg-CDw"/>
@@ -184,7 +212,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n0F-ng-qXG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-891" y="-367"/>
+            <point key="canvasLocation" x="18.840579710144929" y="-367.63392857142856"/>
         </scene>
         <!--MyNotes-->
         <scene sceneID="cIL-u4-QYn">
@@ -194,7 +222,27 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEM-9H-jSx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="27.536231884057973" y="-691.07142857142856"/>
+            <point key="canvasLocation" x="937.68115942028987" y="-691.07142857142856"/>
+        </scene>
+        <!--Contacts-->
+        <scene sceneID="CNa-iZ-cSs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="keL-ji-Tw7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Contacts" image="person.2.fill" catalog="system" id="coE-ll-8Rq"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="N2f-DY-5No">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.59999999999999998" green="0.92941176469999998" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5NC-mZ-6I9" kind="relationship" relationship="rootViewController" id="7Iu-7R-z5X"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VD3-YS-Djv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-796" y="-691"/>
         </scene>
     </scenes>
     <resources>

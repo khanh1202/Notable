@@ -29,6 +29,7 @@ class SignupViewController: UIViewController {
     @IBAction func signUpPressed(_ sender: UIButton) {
         saveDataToViewModel()
         if viewModel.isFormValid() {
+            Spinner.start()
             viewModel.signUpUser()
         } else {
             createAlert(title: "Invalid Info", message: "Please enter all fields to proceed")
@@ -51,10 +52,17 @@ class SignupViewController: UIViewController {
 
 extension SignupViewController: AuthManagerSignupDelegate {
     func didSignupUser() {
-        print("Sign up successfully")
+        Spinner.stop()
+        let storyBoard = UIStoryboard(name: "Main", bundle: .main)
+        
+        if let initialialVC = storyBoard.instantiateInitialViewController() {
+            self.view.window?.rootViewController = initialialVC
+            self.view.window?.makeKeyAndVisible()
+        }
     }
     
     func didFailSignupUser(message: String) {
+        Spinner.stop()
         createAlert(title: "Signup Failed", message: message)
     }
 }

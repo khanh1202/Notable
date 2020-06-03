@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCellIdentifier" rowHeight="79" id="KGk-i7-Jjw" customClass="ContactTableViewCell" customModule="Notable" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="347" height="79"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="347" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Z58-7g-1dj">
+                        <rect key="frame" x="10" y="10" width="327" height="50"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lu9-gw-K5f">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="a5h-Ga-X2f"/>
+                                    <constraint firstAttribute="width" constant="50" id="wma-JN-0VA"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="TwQ-qI-6s9">
+                                <rect key="frame" x="60" y="0.0" width="267" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIe-4w-a8u">
+                                        <rect key="frame" x="0.0" y="0.0" width="267" height="25"/>
+                                        <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="21"/>
+                                        <color key="textColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMo-K3-qp1">
+                                        <rect key="frame" x="0.0" y="25" width="267" height="25"/>
+                                        <fontDescription key="fontDescription" name="ArialHebrew-Light" family="Arial Hebrew" pointSize="16"/>
+                                        <color key="textColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="lu9-gw-K5f" firstAttribute="leading" secondItem="Z58-7g-1dj" secondAttribute="leading" id="R23-D9-gm0"/>
+                            <constraint firstItem="lu9-gw-K5f" firstAttribute="top" secondItem="Z58-7g-1dj" secondAttribute="top" id="f6m-S7-ha4"/>
+                            <constraint firstAttribute="bottom" secondItem="TwQ-qI-6s9" secondAttribute="bottom" id="gzm-UW-t4q"/>
+                            <constraint firstItem="TwQ-qI-6s9" firstAttribute="top" secondItem="Z58-7g-1dj" secondAttribute="top" id="joR-RK-rO6"/>
+                            <constraint firstAttribute="trailing" secondItem="TwQ-qI-6s9" secondAttribute="trailing" id="xEE-LU-b8O"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Z58-7g-1dj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="0BY-ab-3WO"/>
+                    <constraint firstAttribute="trailing" secondItem="Z58-7g-1dj" secondAttribute="trailing" constant="10" id="DU5-qA-chD"/>
+                    <constraint firstItem="Z58-7g-1dj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="VqS-N0-BgZ"/>
+                    <constraint firstAttribute="bottom" secondItem="Z58-7g-1dj" secondAttribute="bottom" constant="10" id="bXR-vt-k4i"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="avatarImage" destination="lu9-gw-K5f" id="ZsH-ZY-FFA"/>
+                <outlet property="displayNameLabel" destination="AIe-4w-a8u" id="6yd-Kk-HDj"/>
+                <outlet property="usernameLabel" destination="bMo-K3-qp1" id="Iy6-xC-bLe"/>
+            </connections>
+            <point key="canvasLocation" x="167.39130434782609" y="138.95089285714286"/>
+        </tableViewCell>
+    </objects>
+</document>

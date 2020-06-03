@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         if let currentUser = currentUser {
-            displayNameLabel.text = currentUser[K.displayNameField] as? String
+            displayNameLabel.text = currentUser.displayname
             usernameLabel.text = currentUser.username
             emailLabel.text = currentUser.email
         }

@@ -25,12 +25,15 @@ class LoginViewController: UIViewController {
     @IBAction func logInPressed(_ sender: UIButton) {
         if let username = usernameTextField.text, let password = passwordTextField.text {
             authManager.logInNewSession(username: username, password: password)
+            Spinner.start()
         }
     }
 }
 
 extension LoginViewController: AuthManagerLoginDelegate {
     func didLoginUser() {
+        Spinner.stop()
+        //TODO: module this one to a utility function
         let storyBoard = UIStoryboard(name: "Main", bundle: .main)
         
         if let initialialVC = storyBoard.instantiateInitialViewController() {
@@ -40,6 +43,7 @@ extension LoginViewController: AuthManagerLoginDelegate {
     }
     
     func didFailLoginUser() {
+        Spinner.stop()
         let alert = UIAlertController(title: "Authentication failed", message: "Please try again", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)

@@ -30,9 +30,16 @@
 		0454AA9024826B42006B6F56 /* NoteEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AA8F24826B42006B6F56 /* NoteEditorViewController.swift */; };
 		0454AA9224828808006B6F56 /* NoteEditorMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AA9124828808006B6F56 /* NoteEditorMode.swift */; };
 		0454AA9424828C28006B6F56 /* MyNotesEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AA9324828C28006B6F56 /* MyNotesEditorViewController.swift */; };
-		0454AA962483C339006B6F56 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AA952483C339006B6F56 /* UIViewControllerExtension.swift */; };
+		0454AA962483C339006B6F56 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AA952483C339006B6F56 /* ToastMessage.swift */; };
 		0454AA982484B2AE006B6F56 /* NoteEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0454AA972484B2AE006B6F56 /* NoteEditor.storyboard */; };
 		0454AA9A2484B398006B6F56 /* MyNotes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0454AA992484B398006B6F56 /* MyNotes.storyboard */; };
+		0454AA9D248524FF006B6F56 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AA9C248524FF006B6F56 /* Spinner.swift */; };
+		0454AA9F248648D2006B6F56 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AA9E248648D2006B6F56 /* User.swift */; };
+		0454AAA624864D15006B6F56 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AAA424864D15006B6F56 /* ContactTableViewCell.swift */; };
+		0454AAA724864D15006B6F56 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0454AAA524864D15006B6F56 /* ContactTableViewCell.xib */; };
+		0454AAA92486531A006B6F56 /* MyContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AAA82486531A006B6F56 /* MyContactsViewController.swift */; };
+		0454AAAB24867780006B6F56 /* ContactsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AAAA24867780006B6F56 /* ContactsDataSource.swift */; };
+		0454AAAD248681C6006B6F56 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AAAC248681C6006B6F56 /* ContactManager.swift */; };
 		3561686BCF01DE3FE2931B1C /* Pods_Notable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5736CD651FAD929E0A55757F /* Pods_Notable.framework */; };
 		D26DFBF8986418748E1A7CD9 /* Pods_NotableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */; };
 /* End PBXBuildFile section */
@@ -75,9 +82,16 @@
 		0454AA8F24826B42006B6F56 /* NoteEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorViewController.swift; sourceTree = "<group>"; };
 		0454AA9124828808006B6F56 /* NoteEditorMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorMode.swift; sourceTree = "<group>"; };
 		0454AA9324828C28006B6F56 /* MyNotesEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesEditorViewController.swift; sourceTree = "<group>"; };
-		0454AA952483C339006B6F56 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		0454AA952483C339006B6F56 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		0454AA972484B2AE006B6F56 /* NoteEditor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NoteEditor.storyboard; sourceTree = "<group>"; };
 		0454AA992484B398006B6F56 /* MyNotes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyNotes.storyboard; sourceTree = "<group>"; };
+		0454AA9C248524FF006B6F56 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		0454AA9E248648D2006B6F56 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0454AAA424864D15006B6F56 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		0454AAA524864D15006B6F56 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
+		0454AAA82486531A006B6F56 /* MyContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContactsViewController.swift; sourceTree = "<group>"; };
+		0454AAAA24867780006B6F56 /* ContactsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsDataSource.swift; sourceTree = "<group>"; };
+		0454AAAC248681C6006B6F56 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		272068D5FFCA98802C281274 /* Pods-NotableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotableTests.release.xcconfig"; path = "Target Support Files/Pods-NotableTests/Pods-NotableTests.release.xcconfig"; sourceTree = "<group>"; };
 		55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5736CD651FAD929E0A55757F /* Pods_Notable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +145,7 @@
 			children = (
 				0454AA4A247A88C2006B6F56 /* AppDelegate.swift */,
 				0454AA4C247A88C2006B6F56 /* SceneDelegate.swift */,
+				0454AA9B248524DC006B6F56 /* Utilities */,
 				0454AA8A24810600006B6F56 /* Enums */,
 				0454AA72247B7018006B6F56 /* Models */,
 				0454AA70247B6FEF006B6F56 /* Controllers */,
@@ -156,15 +171,11 @@
 		0454AA70247B6FEF006B6F56 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0454AAA324864CE9006B6F56 /* Contacts */,
 				0454AA6C247B685F006B6F56 /* PaddingTextField.swift */,
-				0454AA4E247A88C2006B6F56 /* LoginViewController.swift */,
-				0454AA75247BCA45006B6F56 /* SignupViewController.swift */,
-				0454AA7C247E6274006B6F56 /* ProfileViewController.swift */,
-				0454AA7E247EA317006B6F56 /* NoteTableViewCell.swift */,
-				0454AA8D24810D36006B6F56 /* MyNotesViewController.swift */,
-				0454AA8F24826B42006B6F56 /* NoteEditorViewController.swift */,
-				0454AA9324828C28006B6F56 /* MyNotesEditorViewController.swift */,
-				0454AA952483C339006B6F56 /* UIViewControllerExtension.swift */,
+				0454AAA124864CCD006B6F56 /* Onboarding */,
+				0454AAA224864CDC006B6F56 /* Profile */,
+				0454AAA024864C64006B6F56 /* Notes */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -172,6 +183,7 @@
 		0454AA71247B7000006B6F56 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0454AAA524864D15006B6F56 /* ContactTableViewCell.xib */,
 				0454AA7F247EA317006B6F56 /* NoteTableViewCell.xib */,
 				0454AA50247A88C2006B6F56 /* Login.storyboard */,
 				0454AA7A247D0A35006B6F56 /* Main.storyboard */,
@@ -188,6 +200,9 @@
 				0454AA82247FDE08006B6F56 /* Note.swift */,
 				0454AA86247FE4DC006B6F56 /* NoteManager.swift */,
 				0454AA88248101BA006B6F56 /* NotesDataSource.swift */,
+				0454AA9E248648D2006B6F56 /* User.swift */,
+				0454AAAA24867780006B6F56 /* ContactsDataSource.swift */,
+				0454AAAC248681C6006B6F56 /* ContactManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -206,6 +221,52 @@
 				0454AA9124828808006B6F56 /* NoteEditorMode.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		0454AA9B248524DC006B6F56 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0454AA952483C339006B6F56 /* ToastMessage.swift */,
+				0454AA9C248524FF006B6F56 /* Spinner.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		0454AAA024864C64006B6F56 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				0454AA7E247EA317006B6F56 /* NoteTableViewCell.swift */,
+				0454AA8D24810D36006B6F56 /* MyNotesViewController.swift */,
+				0454AA8F24826B42006B6F56 /* NoteEditorViewController.swift */,
+				0454AA9324828C28006B6F56 /* MyNotesEditorViewController.swift */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+		0454AAA124864CCD006B6F56 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				0454AA4E247A88C2006B6F56 /* LoginViewController.swift */,
+				0454AA75247BCA45006B6F56 /* SignupViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		0454AAA224864CDC006B6F56 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				0454AA7C247E6274006B6F56 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		0454AAA324864CE9006B6F56 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				0454AAA424864D15006B6F56 /* ContactTableViewCell.swift */,
+				0454AAA82486531A006B6F56 /* MyContactsViewController.swift */,
+			);
+			path = Contacts;
 			sourceTree = "<group>";
 		};
 		68ADBDBC2B425005B0B8981A /* Frameworks */ = {
@@ -312,6 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0454AAA724864D15006B6F56 /* ContactTableViewCell.xib in Resources */,
 				0454AA57247A88C7006B6F56 /* LaunchScreen.storyboard in Resources */,
 				0454AA54247A88C7006B6F56 /* Assets.xcassets in Resources */,
 				0454AA9A2484B398006B6F56 /* MyNotes.storyboard in Resources */,
@@ -402,11 +464,14 @@
 			files = (
 				0454AA6F247B6F1A006B6F56 /* Constants.swift in Sources */,
 				0454AA9224828808006B6F56 /* NoteEditorMode.swift in Sources */,
-				0454AA962483C339006B6F56 /* UIViewControllerExtension.swift in Sources */,
+				0454AA962483C339006B6F56 /* ToastMessage.swift in Sources */,
+				0454AAA92486531A006B6F56 /* MyContactsViewController.swift in Sources */,
 				0454AA76247BCA45006B6F56 /* SignupViewController.swift in Sources */,
 				0454AA79247BCB70006B6F56 /* SignupViewModel.swift in Sources */,
 				0454AA80247EA317006B6F56 /* NoteTableViewCell.swift in Sources */,
 				0454AA9024826B42006B6F56 /* NoteEditorViewController.swift in Sources */,
+				0454AA9D248524FF006B6F56 /* Spinner.swift in Sources */,
+				0454AA9F248648D2006B6F56 /* User.swift in Sources */,
 				0454AA74247B70D2006B6F56 /* AuthManager.swift in Sources */,
 				0454AA4F247A88C2006B6F56 /* LoginViewController.swift in Sources */,
 				0454AA89248101BA006B6F56 /* NotesDataSource.swift in Sources */,
@@ -416,8 +481,11 @@
 				0454AA87247FE4DC006B6F56 /* NoteManager.swift in Sources */,
 				0454AA7D247E6274006B6F56 /* ProfileViewController.swift in Sources */,
 				0454AA4B247A88C2006B6F56 /* AppDelegate.swift in Sources */,
+				0454AAA624864D15006B6F56 /* ContactTableViewCell.swift in Sources */,
 				0454AA8E24810D36006B6F56 /* MyNotesViewController.swift in Sources */,
 				0454AA4D247A88C2006B6F56 /* SceneDelegate.swift in Sources */,
+				0454AAAD248681C6006B6F56 /* ContactManager.swift in Sources */,
+				0454AAAB24867780006B6F56 /* ContactsDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

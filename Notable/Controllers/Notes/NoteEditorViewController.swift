@@ -27,7 +27,7 @@ class NoteEditorViewController: UIViewController {
     func initializeUI() {
         if let note = note {
             titleTextField.text = note.title
-            timeAndAuthorTextField.text = "Created: \(note.createdAtTimeString) by \(note.author![K.displayNameField] as! String)"
+            timeAndAuthorTextField.text = "Created: \(note.createdAtTimeString) by \(note.author!.displayname!)"
             contentTextView.text = note.content
         }
         
@@ -43,12 +43,14 @@ class NoteEditorViewController: UIViewController {
     }
 
     func saveNote() {
+        Spinner.start()
         noteManager.prepareNoteAndSave(existingNote: note, newTitle: titleTextField.text, newContent: contentTextView.text)
     }
 }
 
 extension NoteEditorViewController: NoteManagerDelegate {
     func didFinishSaveNote() {
+        Spinner.stop()
         navigationController?.popToRootViewController(animated: true)
     }
 }

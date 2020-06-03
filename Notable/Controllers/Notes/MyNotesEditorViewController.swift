@@ -16,8 +16,6 @@ class MyNotesEditorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
     
     @IBAction func savePressed(_ sender: UIBarButtonItem) {

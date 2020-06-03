@@ -27,6 +27,7 @@ class MyNotesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        Spinner.start()
         noteManager.getNotesOwnedByUser()
     }
     
@@ -71,6 +72,7 @@ class MyNotesViewController: UIViewController {
         // TODO: if time is available, refactor the below to a utility method to display alert
         let deleteAlert = UIAlertController(title: K.Messages.confirmShort, message: K.Messages.confirmDeleteLong, preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: K.Options.delete, style: .destructive) { (action) in
+            Spinner.start()
             self.noteManager.deleteNotes(notes: self.selectedNotes)
             self.toggleEditMode()
         }
@@ -98,6 +100,7 @@ extension MyNotesViewController: NoteManagerDelegate {
     func didGetNotesFromServer(_ notes: [Note]) {
         datasource = NotesDataSource(for: notesTableView, notes)
         notesTableView.reloadData()
+        Spinner.stop()
     }
     
     func didFinishDeletingNotes() {

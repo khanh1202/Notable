@@ -31,7 +31,7 @@ class NoteTableViewCell: UITableViewCell {
         noteTitleLabel.text = note.title
         noteBriefLabel.text = note.content
         dateCreatedLabel.text = note.createdAtTimeString
-        authorLabel.text = note.author![K.displayNameField] as? String
+        authorLabel.text = note.author!.displayname
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -43,7 +43,7 @@ struct AuthManager {
         user.username = username
         user.password = password
         user.email = email
-        user[K.displayNameField] = displayName
+        user.displayname = displayName
         
         user.signUpInBackground { (succeeded, error) in
             if succeeded {
