@@ -15,10 +15,12 @@ class ShareNoteViewController: UIViewController {
     var notes: [Note]!
     private var datasource: ContactsDataSource!
     private var contactManager = ContactManager()
+    private var noteManager = NoteManager()
     private var selectedContacts: [PFUser] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         contactManager.delegate = self
+        noteManager.delegate = self
         contactsTableView.delegate = self
         contactsTableView.isEditing = true
     }
@@ -36,6 +38,9 @@ class ShareNoteViewController: UIViewController {
             showToast(message: K.Messages.selectContact, font: UIFont.systemFont(ofSize: 15))
             return
         }
+        
+        Spinner.start()
+        noteManager.shareNotesToUsers(notes: notes, users: selectedContacts)
     }
     
 }
@@ -63,5 +68,12 @@ extension ShareNoteViewController: ContactManagerDelegate {
         datasource = ContactsDataSource(for: contactsTableView, contacts)
         contactsTableView.reloadData()
         Spinner.stop()
+    }
+}
+
+extension ShareNoteViewController: NoteManagerDelegate {
+    func didFinishSharingNotes() {
+        Spinner.stop()
+        navigationController?.popToRootViewController(animated: true)
     }
 }

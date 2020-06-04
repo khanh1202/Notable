@@ -13,12 +13,14 @@ protocol NoteManagerDelegate {
     func didGetNotesFromServer(_ notes: [Note])
     func didFinishSaveNote()
     func didFinishDeletingNotes()
+    func didFinishSharingNotes()
 }
 
 extension NoteManagerDelegate {
     func didGetNotesFromServer(_ notes: [Note]) {}
     func didFinishSaveNote() {}
     func didFinishDeletingNotes() {}
+    func didFinishSharingNotes() {}
 }
 
 struct NoteManager {
@@ -106,6 +108,25 @@ struct NoteManager {
             } else {
                 self.delegate?.didFinishSaveNote()
             }
+        }
+    }
+    
+    func shareNotesToUsers(notes: [Note], users: [PFUser]) {
+        let dispatchGroup = DispatchGroup()
+        for note in notes {
+            dispatchGroup.enter()
+            note.addUniqueObjects(from: users, forKey: K.NoteFields.sharedTo)
+            note.saveInBackground { (ok, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                
+                dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.delegate?.didFinishSharingNotes()
         }
     }
 }
