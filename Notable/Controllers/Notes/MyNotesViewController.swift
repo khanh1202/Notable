@@ -57,6 +57,13 @@ class MyNotesViewController: UIViewController {
     }
     
     @IBAction func shareExecute(_ sender: Any) {
+        guard selectedNotes.count > 0 else {
+            showToast(message: K.Messages.selectNote, font: UIFont.systemFont(ofSize: 15))
+            return
+        }
+        
+        performSegue(withIdentifier: K.Segues.toShareContacts, sender: self)
+        self.toggleEditMode()
     }
     
     @objc func deleteExecute() {
@@ -70,7 +77,7 @@ class MyNotesViewController: UIViewController {
         }
         
         // TODO: if time is available, refactor the below to a utility method to display alert
-        let deleteAlert = UIAlertController(title: K.Messages.confirmShort, message: K.Messages.confirmDeleteLong, preferredStyle: .actionSheet)
+        let deleteAlert = UIAlertController(title: K.Messages.confirmShort, message: K.Messages.confirmDeleteNoteLong, preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: K.Options.delete, style: .destructive) { (action) in
             Spinner.start()
             self.noteManager.deleteNotes(notes: self.selectedNotes)
@@ -87,6 +94,9 @@ class MyNotesViewController: UIViewController {
         case K.Segues.addToNoteEditor:
             let destinationVC = segue.destination as! MyNotesEditorViewController
             destinationVC.mode = .adding
+        case K.Segues.toShareContacts:
+            let destinationVC = segue.destination as! ShareNoteViewController
+            destinationVC.notes = selectedNotes
         default:
             let destinationVC = segue.destination as! MyNotesEditorViewController
             destinationVC.note = datasource.selectedNote
@@ -105,7 +115,7 @@ extension MyNotesViewController: NoteManagerDelegate {
     
     func didFinishDeletingNotes() {
         noteManager.getNotesOwnedByUser()
-        showToast(message: K.Messages.successfulDelete, font: UIFont.systemFont(ofSize: 15))
+        showToast(message: K.Messages.successfulDeleteContact, font: UIFont.systemFont(ofSize: 15))
     }
 }
 

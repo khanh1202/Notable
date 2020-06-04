@@ -25,39 +25,19 @@ class MyContactsViewController: UIViewController {
         updateBarItems()
     }
     
-    func createOneContact() {
-        guard let user = PFUser.current() else { return }
-        let query = PFQuery(className: PFUser.parseClassName())
-        query.getObjectInBackground(withId: "xRri69lYyz") { (magisk, error) in
-            if let magisk = magisk as? PFUser {
-                user.addUniqueObject(magisk, forKey: "contacts")
-                user.saveInBackground { (ok, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    } else {
-                        print("contacted")
-                    }
-                }
-            } else {
-                print(error?.localizedDescription ?? "")
-            }
-        }
-
-        
-        
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         Spinner.start()
-        contactManager.getContactsCurrentUser()
+        contactManager.getContactsCurrentUser { (contacts) in
+            self.didGetContactsFromServer(contacts)
+        }
     }
     
     @IBAction func editCancelExecute(_ sender: Any) {
+        toggleEditMode()
     }
     
     @objc func addExecute() {
-//        performSegue(withIdentifier: K.Segues.addToNoteEditor, sender: self)
+        performSegue(withIdentifier: K.Segues.toSearchUsers, sender: self)
     }
     
     func toggleEditMode() {
@@ -77,17 +57,52 @@ class MyContactsViewController: UIViewController {
     }
     
     @objc func deleteExecute() {
+        guard contactTableView.isEditing else {
+            return
+        }
         
+        guard selectedContacts.count > 0 else {
+            showToast(message: K.Messages.selectContact, font: UIFont.systemFont(ofSize: 15))
+            return
+        }
+        
+        // TODO: if time is available, refactor the below to a utility method to display alert
+        let deleteAlert = UIAlertController(title: K.Messages.confirmShort, message: K.Messages.confirmDeleteContactLong, preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: K.Options.delete, style: .destructive) { (action) in
+            Spinner.start()
+            self.contactManager.deleteContacts(contacts: self.selectedContacts)
+            self.toggleEditMode()
+        }
+        let cancelAction = UIAlertAction(title: K.Options.cancel, style: .cancel, handler: nil)
+        deleteAlert.addAction(deleteAction)
+        deleteAlert.addAction(cancelAction)
+        present(deleteAlert, animated: true, completion: nil)
     }
 }
 
 extension MyContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard tableView.isEditing else {
+            return
+        }
         
+        guard let selectedContact = datasource.getContact(at: indexPath.row) else {
+            return
+        }
+        
+        selectedContacts.append(selectedContact)
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard tableView.isEditing else {
+            return
+        }
         
+        guard let deselectedContact = datasource.getContact(at: indexPath.row), let deselectedIndex = selectedContacts.firstIndex(of: deselectedContact) else {
+            return
+        }
+        
+        selectedContacts.remove(at: deselectedIndex)
     }
 }
 
@@ -96,5 +111,12 @@ extension MyContactsViewController: ContactManagerDelegate {
         datasource = ContactsDataSource(for: contactTableView, contacts)
         contactTableView.reloadData()
         Spinner.stop()
+    }
+    
+    func didFinishRemoveContacts() {
+        contactManager.getContactsCurrentUser { (contacts) in
+            self.didGetContactsFromServer(contacts)
+        }
+        showToast(message: K.Messages.successfulDeleteContact, font: UIFont.systemFont(ofSize: 15))
     }
 }

@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="a5h-Ga-X2f"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="a5h-Ga-X2f"/>
                                     <constraint firstAttribute="width" constant="50" id="wma-JN-0VA"/>
                                 </constraints>
                             </imageView>

@@ -133,6 +133,53 @@
             </objects>
             <point key="canvasLocation" x="938" y="40"/>
         </scene>
+        <!--Add Contacts-->
+        <scene sceneID="lWk-cA-dNn">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="Xpr-Mx-LZD" customClass="AddContactsViewController" customModule="Notable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="exe-Uu-LGe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="AuE-nO-IGO">
+                                <rect key="frame" x="0.0" y="56" width="414" height="718"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.92941176469999998" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Jqr-7w-Ukj">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="AuE-nO-IGO" firstAttribute="top" secondItem="Jqr-7w-Ukj" secondAttribute="bottom" id="46U-4v-h0f"/>
+                            <constraint firstItem="AuE-nO-IGO" firstAttribute="leading" secondItem="ZXT-KI-vO4" secondAttribute="leading" id="6oh-uG-nYg"/>
+                            <constraint firstItem="Jqr-7w-Ukj" firstAttribute="leading" secondItem="ZXT-KI-vO4" secondAttribute="leading" id="V18-kW-jiU"/>
+                            <constraint firstItem="Jqr-7w-Ukj" firstAttribute="top" secondItem="ZXT-KI-vO4" secondAttribute="top" id="ah2-WL-oU9"/>
+                            <constraint firstItem="ZXT-KI-vO4" firstAttribute="bottom" secondItem="AuE-nO-IGO" secondAttribute="bottom" id="cSZ-QY-6Zy"/>
+                            <constraint firstItem="ZXT-KI-vO4" firstAttribute="trailing" secondItem="AuE-nO-IGO" secondAttribute="trailing" id="hig-3v-2gR"/>
+                            <constraint firstItem="Jqr-7w-Ukj" firstAttribute="trailing" secondItem="ZXT-KI-vO4" secondAttribute="trailing" id="yGo-kx-tpG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZXT-KI-vO4"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Contacts" id="2ce-Hv-Eyn">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="hWn-px-b5G">
+                            <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="addExecute:" destination="Xpr-Mx-LZD" id="i2F-Pw-Ct2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameSearchBar" destination="Jqr-7w-Ukj" id="HTf-7l-cX2"/>
+                        <outlet property="usersTableView" destination="AuE-nO-IGO" id="j1L-b7-5o2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LRm-lN-ISe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2510.144927536232" y="-691.07142857142856"/>
+        </scene>
         <!--My Contacts-->
         <scene sceneID="6dp-9M-44d">
             <objects>
@@ -171,6 +218,7 @@
                         <outlet property="addDeleteItem" destination="M4q-Kx-i0L" id="PA0-NT-JqN"/>
                         <outlet property="contactTableView" destination="h7d-Xr-YF0" id="Dqw-sP-gaZ"/>
                         <outlet property="editCancelItem" destination="mNK-hW-Xbb" id="YwD-9C-ukY"/>
+                        <segue destination="Xpr-Mx-LZD" kind="show" identifier="toSearchUsers" id="jXd-4b-gig"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vqS-Bm-Dwp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

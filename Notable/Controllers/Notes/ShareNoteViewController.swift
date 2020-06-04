@@ -1,0 +1,67 @@
+//
+//  ShareNoteViewController.swift
+//  Notable
+//
+//  Created by Khanh Dinh on 6/4/20.
+//  Copyright © 2020 Khanh Dinh. All rights reserved.
+//
+
+import UIKit
+import Parse
+
+class ShareNoteViewController: UIViewController {
+
+    @IBOutlet weak var contactsTableView: UITableView!
+    var notes: [Note]!
+    private var datasource: ContactsDataSource!
+    private var contactManager = ContactManager()
+    private var selectedContacts: [PFUser] = []
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        contactManager.delegate = self
+        contactsTableView.delegate = self
+        contactsTableView.isEditing = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        Spinner.start()
+        contactManager.getContactsCurrentUser { (contacts) in
+            self.didGetContactsFromServer(contacts)
+        }
+    }
+    
+
+    @IBAction func shareExecute(_ sender: Any) {
+        guard selectedContacts.count > 0 else {
+            showToast(message: K.Messages.selectContact, font: UIFont.systemFont(ofSize: 15))
+            return
+        }
+    }
+    
+}
+
+extension ShareNoteViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let selectedContact = datasource.getContact(at: indexPath.row) else {
+            return
+        }
+        
+        selectedContacts.append(selectedContact)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let deselectedContact = datasource.getContact(at: indexPath.row), let deselectedIndex = selectedContacts.firstIndex(of: deselectedContact) else {
+            return
+        }
+        
+        selectedContacts.remove(at: deselectedIndex)
+    }
+}
+
+extension ShareNoteViewController: ContactManagerDelegate {
+    func didGetContactsFromServer(_ contacts: [PFUser]?) {
+        datasource = ContactsDataSource(for: contactsTableView, contacts)
+        contactsTableView.reloadData()
+        Spinner.stop()
+    }
+}

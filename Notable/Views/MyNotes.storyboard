@@ -56,6 +56,7 @@
                         <outlet property="shareBarItem" destination="bW3-Ur-m1Z" id="lvz-s6-wDh"/>
                         <segue destination="CuA-mZ-iIk" kind="show" identifier="noteToEditor" id="YLo-zD-mUV"/>
                         <segue destination="CuA-mZ-iIk" kind="show" identifier="addToNoteEditor" id="Fof-k7-rdO"/>
+                        <segue destination="QLJ-eP-LNH" kind="show" identifier="toShareContacts" id="OhI-dz-cvi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EoU-iV-bQ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -92,6 +93,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJ3-tn-UEY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1798.5507246376812" y="-691.07142857142856"/>
+        </scene>
+        <!--Share To...-->
+        <scene sceneID="IAr-YB-MDC">
+            <objects>
+                <viewController id="QLJ-eP-LNH" customClass="ShareNoteViewController" customModule="Notable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6mr-fP-HLz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="eVS-YN-1xW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.92941176469999998" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="oPk-af-SBd" firstAttribute="trailing" secondItem="eVS-YN-1xW" secondAttribute="trailing" id="Yi1-pm-VJQ"/>
+                            <constraint firstItem="oPk-af-SBd" firstAttribute="bottom" secondItem="eVS-YN-1xW" secondAttribute="bottom" id="caU-5R-AWl"/>
+                            <constraint firstItem="eVS-YN-1xW" firstAttribute="leading" secondItem="oPk-af-SBd" secondAttribute="leading" id="mL6-rj-0NK"/>
+                            <constraint firstItem="eVS-YN-1xW" firstAttribute="top" secondItem="oPk-af-SBd" secondAttribute="top" id="mQE-Cq-itd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oPk-af-SBd"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Share To..." id="OjR-UT-Emt">
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="z4x-FB-rvW">
+                            <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="shareExecute:" destination="QLJ-eP-LNH" id="de5-vD-5FY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contactsTableView" destination="eVS-YN-1xW" id="tpK-WO-FxZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="buO-r9-NkR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1799" y="40"/>
         </scene>
         <!--My Notes-->
         <scene sceneID="P7O-eb-YzQ">

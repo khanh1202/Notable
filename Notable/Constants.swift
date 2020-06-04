@@ -14,6 +14,7 @@ struct K {
     static let contactNibName = "ContactTableViewCell"
     static let noteCellIdentifier = "noteCellIdentifier"
     static let contactCellIdentifier = "ContactCellIdentifier"
+    static let objectIdField = "objectId"
     
     struct UserFields {
         static let displayNameField = "displayname"
@@ -32,6 +33,8 @@ struct K {
         static let noteToEditor = "noteToEditor"
         static let addToNoteEditor = "addToNoteEditor"
         static let parentToChildNoteEditor = "parentToChildNoteEditor"
+        static let toSearchUsers = "toSearchUsers"
+        static let toShareContacts = "toShareContacts"
     }
     
     struct Images {
@@ -40,10 +43,13 @@ struct K {
     }
     
     struct Messages {
-        static let successfulDelete = "Notes deleted successfully"
+        static let successfulDeleteNote = "Notes deleted successfully"
+        static let successfulDeleteContact = "Contacts deleted successfully"
         static let selectNote = "Please select a note"
+        static let selectContact = "Please select a contact"
         static let confirmShort = "Are you sure?"
-        static let confirmDeleteLong = "Are you sure want to delete notes?"
+        static let confirmDeleteNoteLong = "Are you sure want to delete notes?"
+        static let confirmDeleteContactLong = "Are you sure want to delete contacts?"
     }
     
     struct Options {

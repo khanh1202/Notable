@@ -40,6 +40,8 @@
 		0454AAA92486531A006B6F56 /* MyContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AAA82486531A006B6F56 /* MyContactsViewController.swift */; };
 		0454AAAB24867780006B6F56 /* ContactsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AAAA24867780006B6F56 /* ContactsDataSource.swift */; };
 		0454AAAD248681C6006B6F56 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AAAC248681C6006B6F56 /* ContactManager.swift */; };
+		0454AAB12487CDA4006B6F56 /* AddContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AAB02487CDA4006B6F56 /* AddContactsViewController.swift */; };
+		04CAA496248919A9009308E6 /* ShareNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA495248919A9009308E6 /* ShareNoteViewController.swift */; };
 		3561686BCF01DE3FE2931B1C /* Pods_Notable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5736CD651FAD929E0A55757F /* Pods_Notable.framework */; };
 		D26DFBF8986418748E1A7CD9 /* Pods_NotableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */; };
 /* End PBXBuildFile section */
@@ -92,6 +94,8 @@
 		0454AAA82486531A006B6F56 /* MyContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContactsViewController.swift; sourceTree = "<group>"; };
 		0454AAAA24867780006B6F56 /* ContactsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsDataSource.swift; sourceTree = "<group>"; };
 		0454AAAC248681C6006B6F56 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
+		0454AAB02487CDA4006B6F56 /* AddContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactsViewController.swift; sourceTree = "<group>"; };
+		04CAA495248919A9009308E6 /* ShareNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareNoteViewController.swift; sourceTree = "<group>"; };
 		272068D5FFCA98802C281274 /* Pods-NotableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotableTests.release.xcconfig"; path = "Target Support Files/Pods-NotableTests/Pods-NotableTests.release.xcconfig"; sourceTree = "<group>"; };
 		55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5736CD651FAD929E0A55757F /* Pods_Notable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,6 +243,7 @@
 				0454AA8D24810D36006B6F56 /* MyNotesViewController.swift */,
 				0454AA8F24826B42006B6F56 /* NoteEditorViewController.swift */,
 				0454AA9324828C28006B6F56 /* MyNotesEditorViewController.swift */,
+				04CAA495248919A9009308E6 /* ShareNoteViewController.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 			children = (
 				0454AAA424864D15006B6F56 /* ContactTableViewCell.swift */,
 				0454AAA82486531A006B6F56 /* MyContactsViewController.swift */,
+				0454AAB02487CDA4006B6F56 /* AddContactsViewController.swift */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -484,7 +490,9 @@
 				0454AAA624864D15006B6F56 /* ContactTableViewCell.swift in Sources */,
 				0454AA8E24810D36006B6F56 /* MyNotesViewController.swift in Sources */,
 				0454AA4D247A88C2006B6F56 /* SceneDelegate.swift in Sources */,
+				0454AAB12487CDA4006B6F56 /* AddContactsViewController.swift in Sources */,
 				0454AAAD248681C6006B6F56 /* ContactManager.swift in Sources */,
+				04CAA496248919A9009308E6 /* ShareNoteViewController.swift in Sources */,
 				0454AAAB24867780006B6F56 /* ContactsDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
