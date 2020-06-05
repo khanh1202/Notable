@@ -16,7 +16,7 @@ class NoteEditorViewController: UIViewController {
     
     var note: Note?
     var mode = NoteEditorMode.viewing
-    var noteManager = NoteManager()
+    private var noteManager = NoteManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()

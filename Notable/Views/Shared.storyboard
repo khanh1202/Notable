@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bsC-GW-wZO">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Shared-->
+        <scene sceneID="TKk-P3-azT">
+            <objects>
+                <viewController id="r0h-Yy-x97" customClass="SharedNotesViewController" customModule="Notable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E60-Ni-5S2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="4hz-bb-h4I">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.92941176469999998" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="4hz-bb-h4I" firstAttribute="top" secondItem="ZvJ-uO-ivW" secondAttribute="top" id="3Sk-Aa-IF1"/>
+                            <constraint firstItem="ZvJ-uO-ivW" firstAttribute="trailing" secondItem="4hz-bb-h4I" secondAttribute="trailing" id="H9w-ur-W8t"/>
+                            <constraint firstItem="4hz-bb-h4I" firstAttribute="leading" secondItem="ZvJ-uO-ivW" secondAttribute="leading" id="hKL-9T-flK"/>
+                            <constraint firstItem="ZvJ-uO-ivW" firstAttribute="bottom" secondItem="4hz-bb-h4I" secondAttribute="bottom" id="vYr-RK-y3O"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZvJ-uO-ivW"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Shared" id="Kjy-8L-muk"/>
+                    <connections>
+                        <outlet property="sharedNotesTable" destination="4hz-bb-h4I" id="4cv-Hb-jpk"/>
+                        <segue destination="zSO-mv-B6E" kind="show" identifier="sharedToEditor" id="8Kq-Dg-obR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nDT-Tn-WGW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="367.63392857142856"/>
+        </scene>
+        <!--Shared Note EditorVC-->
+        <scene sceneID="e5c-UY-DeH">
+            <objects>
+                <viewController id="zSO-mv-B6E" customClass="SharedNoteEditorVC" customModule="Notable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Veo-Un-sK5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zu7-lx-fRb">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <connections>
+                                    <segue destination="JbL-ll-Qls" kind="embed" identifier="sharedParentToEditor" id="cO1-4z-uOi"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="zu7-lx-fRb" firstAttribute="top" secondItem="lic-mF-Ttt" secondAttribute="top" id="0Zb-cT-xbs"/>
+                            <constraint firstItem="zu7-lx-fRb" firstAttribute="leading" secondItem="lic-mF-Ttt" secondAttribute="leading" id="EWA-aD-zxK"/>
+                            <constraint firstItem="lic-mF-Ttt" firstAttribute="trailing" secondItem="zu7-lx-fRb" secondAttribute="trailing" id="Oeh-IU-jSx"/>
+                            <constraint firstItem="lic-mF-Ttt" firstAttribute="bottom" secondItem="zu7-lx-fRb" secondAttribute="bottom" id="bjh-p3-QnW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lic-mF-Ttt"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0c6-iL-aLf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hEG-Qa-2Zh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="868" y="368"/>
+        </scene>
+        <!--NoteEditor-->
+        <scene sceneID="ujK-qO-363">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NoteEditor" id="JbL-ll-Qls" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G90-e9-Kqb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1642" y="368"/>
+        </scene>
+        <!--Shared-->
+        <scene sceneID="VJ3-SN-dzD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bsC-GW-wZO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Shared" image="arrow.down.circle.fill" catalog="system" id="Gwj-cM-gEZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="9LO-u9-A7k">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.59999999999999998" green="0.92941176469999998" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="r0h-Yy-x97" kind="relationship" relationship="rootViewController" id="tv9-No-8z9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z3f-S1-h64" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-891.304347826087" y="367.63392857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>
+    </resources>
+</document>

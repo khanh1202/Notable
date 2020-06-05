@@ -60,12 +60,13 @@ struct NoteManager {
         }
     }
     
-    func getNotesShareToUser() {
+    func getNotesSharedToUser() {
         guard let user = PFUser.current() else {
             return
         }
         
-        let noteQuery = PFQuery(className: Note.parseClassName()).whereKey(K.NoteFields.sharedTo, containsAllObjectsIn: [user])
+        let noteQuery = PFQuery(className: Note.parseClassName())
+            .whereKey(K.NoteFields.sharedTo, containsAllObjectsIn: [user])
         
         noteQuery.findObjectsInBackground { (notes, error) in
             if let error = error {

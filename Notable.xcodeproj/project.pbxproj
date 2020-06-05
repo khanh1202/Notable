@@ -43,6 +43,11 @@
 		0454AAB12487CDA4006B6F56 /* AddContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454AAB02487CDA4006B6F56 /* AddContactsViewController.swift */; };
 		04CAA496248919A9009308E6 /* ShareNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA495248919A9009308E6 /* ShareNoteViewController.swift */; };
 		04CAA498248931DF009308E6 /* MyContacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CAA497248931DF009308E6 /* MyContacts.storyboard */; };
+		04CAA49A248A3D03009308E6 /* Shared.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CAA499248A3D03009308E6 /* Shared.storyboard */; };
+		04CAA49D248A3E37009308E6 /* SharedNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA49C248A3E37009308E6 /* SharedNotesViewController.swift */; };
+		04CAA49F248A453F009308E6 /* SharedNoteEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA49E248A453F009308E6 /* SharedNoteEditorVC.swift */; };
+		04CAA4A1248A7277009308E6 /* Sharing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CAA4A0248A7277009308E6 /* Sharing.storyboard */; };
+		04CAA4A4248A733C009308E6 /* SharingNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA4A3248A733C009308E6 /* SharingNotesViewController.swift */; };
 		3561686BCF01DE3FE2931B1C /* Pods_Notable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5736CD651FAD929E0A55757F /* Pods_Notable.framework */; };
 		D26DFBF8986418748E1A7CD9 /* Pods_NotableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */; };
 /* End PBXBuildFile section */
@@ -98,6 +103,11 @@
 		0454AAB02487CDA4006B6F56 /* AddContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactsViewController.swift; sourceTree = "<group>"; };
 		04CAA495248919A9009308E6 /* ShareNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareNoteViewController.swift; sourceTree = "<group>"; };
 		04CAA497248931DF009308E6 /* MyContacts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyContacts.storyboard; sourceTree = "<group>"; };
+		04CAA499248A3D03009308E6 /* Shared.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Shared.storyboard; sourceTree = "<group>"; };
+		04CAA49C248A3E37009308E6 /* SharedNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedNotesViewController.swift; sourceTree = "<group>"; };
+		04CAA49E248A453F009308E6 /* SharedNoteEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedNoteEditorVC.swift; sourceTree = "<group>"; };
+		04CAA4A0248A7277009308E6 /* Sharing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sharing.storyboard; sourceTree = "<group>"; };
+		04CAA4A3248A733C009308E6 /* SharingNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingNotesViewController.swift; sourceTree = "<group>"; };
 		272068D5FFCA98802C281274 /* Pods-NotableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotableTests.release.xcconfig"; path = "Target Support Files/Pods-NotableTests/Pods-NotableTests.release.xcconfig"; sourceTree = "<group>"; };
 		55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5736CD651FAD929E0A55757F /* Pods_Notable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +187,8 @@
 		0454AA70247B6FEF006B6F56 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				04CAA4A2248A7313009308E6 /* Sharing */,
+				04CAA49B248A3E0C009308E6 /* Shared */,
 				0454AAA324864CE9006B6F56 /* Contacts */,
 				0454AA6C247B685F006B6F56 /* PaddingTextField.swift */,
 				0454AAA124864CCD006B6F56 /* Onboarding */,
@@ -193,6 +205,8 @@
 				0454AA7F247EA317006B6F56 /* NoteTableViewCell.xib */,
 				0454AA50247A88C2006B6F56 /* Login.storyboard */,
 				0454AA7A247D0A35006B6F56 /* Main.storyboard */,
+				04CAA4A0248A7277009308E6 /* Sharing.storyboard */,
+				04CAA499248A3D03009308E6 /* Shared.storyboard */,
 				04CAA497248931DF009308E6 /* MyContacts.storyboard */,
 				0454AA992484B398006B6F56 /* MyNotes.storyboard */,
 				0454AA972484B2AE006B6F56 /* NoteEditor.storyboard */,
@@ -276,6 +290,23 @@
 				0454AAB02487CDA4006B6F56 /* AddContactsViewController.swift */,
 			);
 			path = Contacts;
+			sourceTree = "<group>";
+		};
+		04CAA49B248A3E0C009308E6 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				04CAA49C248A3E37009308E6 /* SharedNotesViewController.swift */,
+				04CAA49E248A453F009308E6 /* SharedNoteEditorVC.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		04CAA4A2248A7313009308E6 /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				04CAA4A3248A733C009308E6 /* SharingNotesViewController.swift */,
+			);
+			path = Sharing;
 			sourceTree = "<group>";
 		};
 		68ADBDBC2B425005B0B8981A /* Frameworks */ = {
@@ -383,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04CAA498248931DF009308E6 /* MyContacts.storyboard in Resources */,
+				04CAA49A248A3D03009308E6 /* Shared.storyboard in Resources */,
 				0454AAA724864D15006B6F56 /* ContactTableViewCell.xib in Resources */,
 				0454AA57247A88C7006B6F56 /* LaunchScreen.storyboard in Resources */,
 				0454AA54247A88C7006B6F56 /* Assets.xcassets in Resources */,
@@ -390,6 +422,7 @@
 				0454AA52247A88C2006B6F56 /* Login.storyboard in Resources */,
 				0454AA81247EA317006B6F56 /* NoteTableViewCell.xib in Resources */,
 				0454AA7B247D0A35006B6F56 /* Main.storyboard in Resources */,
+				04CAA4A1248A7277009308E6 /* Sharing.storyboard in Resources */,
 				0454AA982484B2AE006B6F56 /* NoteEditor.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +508,7 @@
 				0454AA6F247B6F1A006B6F56 /* Constants.swift in Sources */,
 				0454AA9224828808006B6F56 /* NoteEditorMode.swift in Sources */,
 				0454AA962483C339006B6F56 /* ToastMessage.swift in Sources */,
+				04CAA49D248A3E37009308E6 /* SharedNotesViewController.swift in Sources */,
 				0454AAA92486531A006B6F56 /* MyContactsViewController.swift in Sources */,
 				0454AA76247BCA45006B6F56 /* SignupViewController.swift in Sources */,
 				0454AA79247BCB70006B6F56 /* SignupViewModel.swift in Sources */,
@@ -487,6 +521,7 @@
 				0454AA89248101BA006B6F56 /* NotesDataSource.swift in Sources */,
 				0454AA6D247B685F006B6F56 /* PaddingTextField.swift in Sources */,
 				0454AA83247FDE08006B6F56 /* Note.swift in Sources */,
+				04CAA49F248A453F009308E6 /* SharedNoteEditorVC.swift in Sources */,
 				0454AA9424828C28006B6F56 /* MyNotesEditorViewController.swift in Sources */,
 				0454AA87247FE4DC006B6F56 /* NoteManager.swift in Sources */,
 				0454AA7D247E6274006B6F56 /* ProfileViewController.swift in Sources */,
@@ -498,6 +533,7 @@
 				0454AAAD248681C6006B6F56 /* ContactManager.swift in Sources */,
 				04CAA496248919A9009308E6 /* ShareNoteViewController.swift in Sources */,
 				0454AAAB24867780006B6F56 /* ContactsDataSource.swift in Sources */,
+				04CAA4A4248A733C009308E6 /* SharingNotesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

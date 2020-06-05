@@ -35,6 +35,8 @@ struct K {
         static let parentToChildNoteEditor = "parentToChildNoteEditor"
         static let toSearchUsers = "toSearchUsers"
         static let toShareContacts = "toShareContacts"
+        static let sharedToEditor = "sharedToEditor"
+        static let sharedParentToEditor = "sharedParentToEditor"
     }
     
     struct Images {

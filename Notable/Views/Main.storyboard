@@ -7,22 +7,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shared-->
-        <scene sceneID="TKk-P3-azT">
-            <objects>
-                <viewController id="r0h-Yy-x97" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="E60-Ni-5S2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="ZvJ-uO-ivW"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Shared" image="arrow.down.circle.fill" catalog="system" id="Gwj-cM-gEZ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nDT-Tn-WGW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-891" y="368"/>
-        </scene>
         <!--Profile-->
         <scene sceneID="BOM-U8-NNa">
             <objects>
@@ -133,22 +117,6 @@
             </objects>
             <point key="canvasLocation" x="938" y="40"/>
         </scene>
-        <!--Sharing-->
-        <scene sceneID="Gbu-P0-LWX">
-            <objects>
-                <viewController id="Hte-Mf-9HW" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="q9m-Xc-qo1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="KbQ-0h-LVk"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Sharing" image="arrowshape.turn.up.right.fill" catalog="system" id="v4c-ez-OoG"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AZX-Z2-bah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1871" y="7"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Mcr-PM-eME">
             <objects>
@@ -161,8 +129,8 @@
                     <connections>
                         <segue destination="2jh-Bx-4SK" kind="relationship" relationship="viewControllers" id="Ibe-QR-3Fv"/>
                         <segue destination="aLP-a6-COA" kind="relationship" relationship="viewControllers" id="Fot-YL-S3K"/>
-                        <segue destination="Hte-Mf-9HW" kind="relationship" relationship="viewControllers" id="UqE-LE-dYT"/>
-                        <segue destination="r0h-Yy-x97" kind="relationship" relationship="viewControllers" id="zC6-1q-MBb"/>
+                        <segue destination="vRj-WA-MrU" kind="relationship" relationship="viewControllers" id="UqE-LE-dYT"/>
+                        <segue destination="rui-EA-EQb" kind="relationship" relationship="viewControllers" id="zC6-1q-MBb"/>
                         <segue destination="vMG-Z7-qdU" kind="relationship" relationship="viewControllers" id="oTV-yg-CDw"/>
                     </connections>
                 </tabBarController>
@@ -190,10 +158,28 @@
             </objects>
             <point key="canvasLocation" x="-799" y="-680"/>
         </scene>
+        <!--Shared-->
+        <scene sceneID="RD6-sR-zww">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Shared" id="rui-EA-EQb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Uqe-Cm-agG"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AeJ-yN-JaW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-891" y="368"/>
+        </scene>
+        <!--Sharing-->
+        <scene sceneID="cg8-Zr-7Hg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Sharing" id="vRj-WA-MrU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="9pW-19-fHY"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6MA-bP-J9k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1871" y="7"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="arrowshape.turn.up.right.fill" catalog="system" width="128" height="106"/>
         <image name="envelope" catalog="system" width="128" height="93"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
