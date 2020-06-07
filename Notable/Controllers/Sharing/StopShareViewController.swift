@@ -41,7 +41,7 @@ class StopShareViewController: UIViewController {
 
 extension StopShareViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let selectedContact = datasource.getContact(at: indexPath.row) else {
+        guard let selectedContact = datasource.item(at: indexPath) else {
             return
         }
         
@@ -49,7 +49,7 @@ extension StopShareViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        guard let deselectedContact = datasource.getContact(at: indexPath.row), let deselectedIndex = selectedContacts.firstIndex(of: deselectedContact) else {
+        guard let deselectedContact = datasource.item(at: indexPath), let deselectedIndex = selectedContacts.firstIndex(of: deselectedContact) else {
             return
         }
         
@@ -59,7 +59,7 @@ extension StopShareViewController: UITableViewDelegate {
 
 extension StopShareViewController: ContactManagerDelegate {
     func didGetContactsFromServer(_ contacts: [PFUser]?) {
-        datasource = ContactsDataSource(for: sharingContactsTable, contacts)
+        datasource = ContactsDataSource(tableView: sharingContactsTable, items: contacts!)
         sharingContactsTable.reloadData()
         Spinner.stop()
     }

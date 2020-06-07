@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class ContactTableViewCell: UITableViewCell {
+class ContactTableViewCell: UITableViewCell, ConfigurableCell {
 
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var displayNameLabel: UILabel!
@@ -18,10 +18,11 @@ class ContactTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        populateUI()
     }
     
-    func populateUI() {
+    func configure(_ item: PFUser?, at indexPath: IndexPath) {
+        contact = item
+        
         guard let contact = contact else {
             return
         }

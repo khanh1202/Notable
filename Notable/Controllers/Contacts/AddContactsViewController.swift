@@ -45,7 +45,7 @@ extension AddContactsViewController: ContactManagerDelegate {
             return
         }
         
-        datasource = ContactsDataSource(for: usersTableView, users)
+        datasource = ContactsDataSource(tableView: usersTableView, items: users)
         usersTableView.reloadData()
         Spinner.stop()
     }
@@ -60,7 +60,7 @@ extension AddContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard tableView.isEditing else { return }
         
-        guard let selectedUser = datasource.getContact(at: indexPath.row) else {
+        guard let selectedUser = datasource.item(at: indexPath) else {
             return
         }
         
@@ -70,7 +70,7 @@ extension AddContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard tableView.isEditing else { return }
         
-        guard let deselectedUser = datasource.getContact(at: indexPath.row), let deselectedIndex = selectedUsers.firstIndex(of: deselectedUser) else {
+        guard let deselectedUser = datasource.item(at: indexPath), let deselectedIndex = selectedUsers.firstIndex(of: deselectedUser) else {
             return
         }
         

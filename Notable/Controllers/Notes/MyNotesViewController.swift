@@ -99,7 +99,7 @@ class MyNotesViewController: UIViewController {
             destinationVC.notes = selectedNotes
         default:
             let destinationVC = segue.destination as! MyNotesEditorViewController
-            destinationVC.note = datasource.selectedNote
+            destinationVC.note = datasource.selectedItem
             destinationVC.mode = .editing
         }
     }
@@ -108,7 +108,7 @@ class MyNotesViewController: UIViewController {
 
 extension MyNotesViewController: NoteManagerDelegate {
     func didGetNotesFromServer(_ notes: [Note]) {
-        datasource = NotesDataSource(for: notesTableView, notes)
+        datasource = NotesDataSource(tableView: notesTableView, items: notes)
         notesTableView.reloadData()
         Spinner.stop()
     }
@@ -121,7 +121,7 @@ extension MyNotesViewController: NoteManagerDelegate {
 
 extension MyNotesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let selectedNote = datasource.getNote(at: indexPath.row) else {
+        guard let selectedNote = datasource.item(at: indexPath) else {
             return
         }
         
@@ -138,7 +138,7 @@ extension MyNotesViewController: UITableViewDelegate {
             return
         }
         
-        guard let deselectedNote = datasource.getNote(at: indexPath.row), let deselectedIndex = selectedNotes.firstIndex(of: deselectedNote) else {
+        guard let deselectedNote = datasource.item(at: indexPath), let deselectedIndex = selectedNotes.firstIndex(of: deselectedNote) else {
             return
         }
         

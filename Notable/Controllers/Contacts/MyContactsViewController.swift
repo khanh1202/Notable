@@ -86,7 +86,7 @@ extension MyContactsViewController: UITableViewDelegate {
             return
         }
         
-        guard let selectedContact = datasource.getContact(at: indexPath.row) else {
+        guard let selectedContact = datasource.item(at: indexPath) else {
             return
         }
         
@@ -98,7 +98,7 @@ extension MyContactsViewController: UITableViewDelegate {
             return
         }
         
-        guard let deselectedContact = datasource.getContact(at: indexPath.row), let deselectedIndex = selectedContacts.firstIndex(of: deselectedContact) else {
+        guard let deselectedContact = datasource.item(at: indexPath), let deselectedIndex = selectedContacts.firstIndex(of: deselectedContact) else {
             return
         }
         
@@ -108,7 +108,7 @@ extension MyContactsViewController: UITableViewDelegate {
 
 extension MyContactsViewController: ContactManagerDelegate {
     func didGetContactsFromServer(_ contacts: [PFUser]?) {
-        datasource = ContactsDataSource(for: contactTableView, contacts)
+        datasource = ContactsDataSource(tableView: contactTableView, items: contacts!)
         contactTableView.reloadData()
         Spinner.stop()
     }

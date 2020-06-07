@@ -8,7 +8,8 @@
 
 import UIKit
 
-class NoteTableViewCell: UITableViewCell {
+class NoteTableViewCell: UITableViewCell, ConfigurableCell {
+    
 
     @IBOutlet weak var noteTitleLabel: UILabel!
     @IBOutlet weak var noteBriefLabel: UILabel!
@@ -19,11 +20,11 @@ class NoteTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        populateUI()
     }
     
-    func populateUI() {
+    func configure(_ item: Note?, at indexPath: IndexPath) {
+        note = item
+        
         guard let note = note else {
             return
         }

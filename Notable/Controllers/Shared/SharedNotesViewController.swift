@@ -27,7 +27,7 @@ class SharedNotesViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segues.sharedToEditor {
             let destinationVC = segue.destination as! SharedNoteEditorVC
-            destinationVC.note = datasource.selectedNote
+            destinationVC.note = datasource.selectedItem
             destinationVC.mode = .viewing
         }
     }
@@ -43,7 +43,7 @@ extension SharedNotesViewController: UITableViewDelegate {
 
 extension SharedNotesViewController: NoteManagerDelegate {
     func didGetNotesFromServer(_ notes: [Note]) {
-        datasource = NotesDataSource(for: sharedNotesTable, notes)
+        datasource = NotesDataSource(tableView: sharedNotesTable, items: notes)
         sharedNotesTable.reloadData()
         Spinner.stop()
     }

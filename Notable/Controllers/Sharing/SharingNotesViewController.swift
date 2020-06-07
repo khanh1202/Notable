@@ -31,7 +31,7 @@ class SharingNotesViewController: UIViewController {
     }
     
     @IBAction func stopShareExecute(_ sender: Any) {
-        guard datasource.selectedNote != nil else {
+        guard datasource.selectedItem != nil else {
             showToast(message: K.Messages.selectNote, font: UIFont.systemFont(ofSize: 15))
             return
         }
@@ -51,11 +51,11 @@ class SharingNotesViewController: UIViewController {
         switch segue.identifier {
         case K.Segues.sharingToEditor:
             let destinationVC = segue.destination as! SharingNoteEditorVC
-            destinationVC.note = datasource.selectedNote
+            destinationVC.note = datasource.selectedItem
             destinationVC.mode = .viewing
         default:
             let destinationVC = segue.destination as! StopShareViewController
-            destinationVC.note = datasource.selectedNote!
+            destinationVC.note = datasource.selectedItem!
         }
     }
 
@@ -73,7 +73,7 @@ extension SharingNotesViewController: UITableViewDelegate {
 
 extension SharingNotesViewController: NoteManagerDelegate {
     func didGetNotesFromServer(_ notes: [Note]) {
-        datasource = NotesDataSource(for: sharingNotesTable, notes)
+        datasource = NotesDataSource(tableView: sharingNotesTable, items: notes)
         sharingNotesTable.reloadData()
         Spinner.stop()
     }
