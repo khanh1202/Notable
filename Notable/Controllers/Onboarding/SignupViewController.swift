@@ -15,7 +15,9 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var emailTextField: PaddingTextField!
     @IBOutlet weak var passwordTextField: PaddingTextField!
     
-    var viewModel = SignupViewModel()
+    lazy var viewModel: SignupViewModel = {
+        return SignupViewModel()
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,24 @@ class SignupViewController: UIViewController {
         displayNameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        viewModel.authManager.signupDelegate = self
+        initViewModel()
+    }
+    
+    func initViewModel() {
+        viewModel.successfulSignupClosure = { [weak self] () in
+            Spinner.stop()
+            let storyBoard = UIStoryboard(name: "Main", bundle: .main)
+            
+            if let initialialVC = storyBoard.instantiateInitialViewController() {
+                self?.view.window?.rootViewController = initialialVC
+                self?.view.window?.makeKeyAndVisible()
+            }
+        }
+        
+        viewModel.failSignupClosure = { [weak self] (message) in
+            Spinner.stop()
+            self?.createAlert(title: "Signup Failed", message: message)
+        }
     }
     
     @IBAction func signUpPressed(_ sender: UIButton) {
@@ -47,23 +66,6 @@ class SignupViewController: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
-    }
-}
-
-extension SignupViewController: AuthManagerSignupDelegate {
-    func didSignupUser() {
-        Spinner.stop()
-        let storyBoard = UIStoryboard(name: "Main", bundle: .main)
-        
-        if let initialialVC = storyBoard.instantiateInitialViewController() {
-            self.view.window?.rootViewController = initialialVC
-            self.view.window?.makeKeyAndVisible()
-        }
-    }
-    
-    func didFailSignupUser(message: String) {
-        Spinner.stop()
-        createAlert(title: "Signup Failed", message: message)
     }
 }
 

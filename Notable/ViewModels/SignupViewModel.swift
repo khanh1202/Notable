@@ -8,12 +8,19 @@
 
 import Foundation
 
-struct SignupViewModel {
+class SignupViewModel {
     var username: String?
     var displayName: String?
     var email: String?
     var password: String?
-    var authManager = AuthManager()
+    var successfulSignupClosure: (() -> ())?
+    var failSignupClosure: ((String) -> ())?
+    var authManager: AuthManager
+    
+    init() {
+        authManager = AuthManager()
+        authManager.delegate = self
+    }
     
     func isFormValid() -> Bool {
         guard let username = username, let displayName = displayName, let email = email, let password = password else {
@@ -29,5 +36,15 @@ struct SignupViewModel {
     
     func signUpUser() {
         authManager.signUpUser(username!, displayName!, email!, password!)
+    }
+}
+
+extension SignupViewModel: AuthManagerDelegate {
+    func didSignupUser() {
+        successfulSignupClosure?()
+    }
+    
+    func didFailSignupUser(message: String) {
+        failSignupClosure?(message)
     }
 }

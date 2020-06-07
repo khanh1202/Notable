@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
     var authManager = AuthManager()
     
     override func viewDidLoad() {
-        authManager.loginDelegate = self
+        authManager.delegate = self
         usernameTextField.delegate = self
         passwordTextField.delegate = self
     }
@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController: AuthManagerLoginDelegate {
+extension LoginViewController: AuthManagerDelegate {
     func didLoginUser() {
         Spinner.stop()
         //TODO: module this one to a utility function

@@ -9,27 +9,30 @@
 import Foundation
 import Parse
 
-protocol AuthManagerLoginDelegate {
+protocol AuthManagerDelegate {
     func didLoginUser()
     func didFailLoginUser()
-}
-
-protocol AuthManagerSignupDelegate {
     func didSignupUser()
     func didFailSignupUser(message: String)
 }
 
+extension AuthManagerDelegate {
+    func didLoginUser() {}
+    func didFailLoginUser() {}
+    func didSignupUser() {}
+    func didFailSignupUser(message: String) {}
+}
+
 struct AuthManager {
-    var loginDelegate: AuthManagerLoginDelegate?
-    var signupDelegate: AuthManagerSignupDelegate?
+    var delegate: AuthManagerDelegate?
     
     func logInNewSession(username: String, password: String) {
         PFUser.logInWithUsername(inBackground: username, password: password) {
             (user, error) in
             if user != nil {
-                self.loginDelegate?.didLoginUser()
+                self.delegate?.didLoginUser()
             } else {
-                self.loginDelegate?.didFailLoginUser()
+                self.delegate?.didFailLoginUser()
             }
         }
     }
@@ -46,10 +49,10 @@ struct AuthManager {
         user.displayname = displayName
         
         user.signUpInBackground { (succeeded, error) in
-            if succeeded {
-                self.signupDelegate?.didSignupUser()
+            if let error = error {
+                self.delegate?.didFailSignupUser(message: error.localizedDescription)
             } else {
-                self.signupDelegate?.didFailSignupUser(message: error!.localizedDescription)
+                self.delegate?.didSignupUser()
             }
         }
     }
