@@ -49,12 +49,20 @@ struct NoteManager {
         }
         
         let noteQuery = PFQuery(className: Note.parseClassName())
-        noteQuery.whereKeyExists(K.NoteFields.sharedTo).whereKey(K.NoteFields.author, equalTo: user)
+            .whereKey(K.NoteFields.author, equalTo: user)
+            .whereKeyExists(K.NoteFields.sharedTo)
         
-        noteQuery.findObjectsInBackground { (notes, error) in
+        noteQuery.findObjectsInBackground { (unfilteredNotes, error) in
             if let error = error {
                 print(error.localizedDescription)
-            } else if let notes = notes as? [Note] {
+            } else if let unfilteredNotes = unfilteredNotes as? [Note] {
+                let notes = unfilteredNotes.filter { (note) -> Bool in
+                    if let usersShared = note.object(forKey: K.NoteFields.sharedTo) as? [PFUser] {
+                        return usersShared != []
+                    }
+                    
+                    return false
+                }
                 self.delegate?.didGetNotesFromServer(notes)
             }
         }

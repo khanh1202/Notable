@@ -14,6 +14,7 @@ protocol ContactManagerDelegate {
     func didFinishRemoveContacts()
     func didFinishSearchingUsers(users: [PFUser]?)
     func didAddUsersToContacts()
+    func didFinishUnshareToUsers()
 }
 
 extension ContactManagerDelegate {
@@ -21,6 +22,7 @@ extension ContactManagerDelegate {
     func didFinishRemoveContacts() {}
     func didFinishSearchingUsers(users: [PFUser]?) {}
     func didAddUsersToContacts() {}
+    func didFinishUnshareToUsers() {}
 }
 
 struct ContactManager {
@@ -58,8 +60,10 @@ struct ContactManager {
     }
     
     func searchUsersToContact(name: String) {
+        guard let userId = PFUser.current()?.objectId else { return }
         let queryName = PFQuery(className: PFUser.parseClassName())
             .whereKey(K.UserFields.displayNameField, matchesRegex: name, modifiers: "i")
+            .whereKey(K.objectIdField, notEqualTo: userId)
         
         getContactsCurrentUser { (contacts) in
             let userIds = (contacts ?? []).map { $0.objectId ?? ""}
@@ -83,6 +87,32 @@ struct ContactManager {
                 print(error.localizedDescription)
             } else {
                 self.delegate?.didAddUsersToContacts()
+            }
+        }
+    }
+    
+    func getUsersNoteIsShared(_ note: Note) {
+        let noteQuery = PFQuery(className: Note.parseClassName())
+            .whereKey(K.objectIdField, equalTo: note.objectId!)
+            .includeKey(K.NoteFields.sharedTo)
+        
+        noteQuery.getFirstObjectInBackground { (fetchedNote, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                let sharedUsers = fetchedNote?.object(forKey: K.NoteFields.sharedTo) as? [PFUser]
+                self.delegate?.didGetContactsFromServer(sharedUsers)
+            }
+        }
+    }
+    
+    func unshareToUsers(for note: Note, to users: [PFUser]) {
+        note.removeObjects(in: users, forKey: K.NoteFields.sharedTo)
+        note.saveInBackground { (ok, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                self.delegate?.didFinishUnshareToUsers()
             }
         }
     }

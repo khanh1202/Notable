@@ -37,6 +37,9 @@ struct K {
         static let toShareContacts = "toShareContacts"
         static let sharedToEditor = "sharedToEditor"
         static let sharedParentToEditor = "sharedParentToEditor"
+        static let sharingToEditor = "sharingToEditor"
+        static let sharingParentToEditor = "sharingParentToEditor"
+        static let toStopShare = "toStopShare"
     }
     
     struct Images {

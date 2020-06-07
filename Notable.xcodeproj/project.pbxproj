@@ -48,6 +48,8 @@
 		04CAA49F248A453F009308E6 /* SharedNoteEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA49E248A453F009308E6 /* SharedNoteEditorVC.swift */; };
 		04CAA4A1248A7277009308E6 /* Sharing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04CAA4A0248A7277009308E6 /* Sharing.storyboard */; };
 		04CAA4A4248A733C009308E6 /* SharingNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA4A3248A733C009308E6 /* SharingNotesViewController.swift */; };
+		04CAA4A6248A8062009308E6 /* SharingNoteEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA4A5248A8062009308E6 /* SharingNoteEditorVC.swift */; };
+		04CAA4A8248A84B0009308E6 /* StopShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA4A7248A84B0009308E6 /* StopShareViewController.swift */; };
 		3561686BCF01DE3FE2931B1C /* Pods_Notable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5736CD651FAD929E0A55757F /* Pods_Notable.framework */; };
 		D26DFBF8986418748E1A7CD9 /* Pods_NotableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */; };
 /* End PBXBuildFile section */
@@ -108,6 +110,8 @@
 		04CAA49E248A453F009308E6 /* SharedNoteEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedNoteEditorVC.swift; sourceTree = "<group>"; };
 		04CAA4A0248A7277009308E6 /* Sharing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sharing.storyboard; sourceTree = "<group>"; };
 		04CAA4A3248A733C009308E6 /* SharingNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingNotesViewController.swift; sourceTree = "<group>"; };
+		04CAA4A5248A8062009308E6 /* SharingNoteEditorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingNoteEditorVC.swift; sourceTree = "<group>"; };
+		04CAA4A7248A84B0009308E6 /* StopShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopShareViewController.swift; sourceTree = "<group>"; };
 		272068D5FFCA98802C281274 /* Pods-NotableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotableTests.release.xcconfig"; path = "Target Support Files/Pods-NotableTests/Pods-NotableTests.release.xcconfig"; sourceTree = "<group>"; };
 		55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5736CD651FAD929E0A55757F /* Pods_Notable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,6 +309,8 @@
 			isa = PBXGroup;
 			children = (
 				04CAA4A3248A733C009308E6 /* SharingNotesViewController.swift */,
+				04CAA4A5248A8062009308E6 /* SharingNoteEditorVC.swift */,
+				04CAA4A7248A84B0009308E6 /* StopShareViewController.swift */,
 			);
 			path = Sharing;
 			sourceTree = "<group>";
@@ -515,6 +521,7 @@
 				0454AA80247EA317006B6F56 /* NoteTableViewCell.swift in Sources */,
 				0454AA9024826B42006B6F56 /* NoteEditorViewController.swift in Sources */,
 				0454AA9D248524FF006B6F56 /* Spinner.swift in Sources */,
+				04CAA4A6248A8062009308E6 /* SharingNoteEditorVC.swift in Sources */,
 				0454AA9F248648D2006B6F56 /* User.swift in Sources */,
 				0454AA74247B70D2006B6F56 /* AuthManager.swift in Sources */,
 				0454AA4F247A88C2006B6F56 /* LoginViewController.swift in Sources */,
@@ -523,6 +530,7 @@
 				0454AA83247FDE08006B6F56 /* Note.swift in Sources */,
 				04CAA49F248A453F009308E6 /* SharedNoteEditorVC.swift in Sources */,
 				0454AA9424828C28006B6F56 /* MyNotesEditorViewController.swift in Sources */,
+				04CAA4A8248A84B0009308E6 /* StopShareViewController.swift in Sources */,
 				0454AA87247FE4DC006B6F56 /* NoteManager.swift in Sources */,
 				0454AA7D247E6274006B6F56 /* ProfileViewController.swift in Sources */,
 				0454AA4B247A88C2006B6F56 /* AppDelegate.swift in Sources */,

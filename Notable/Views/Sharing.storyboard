@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Wf-tr-9nD">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sharing Notes-->
+        <scene sceneID="Gbu-P0-LWX">
+            <objects>
+                <viewController id="Hte-Mf-9HW" customClass="SharingNotesViewController" customModule="Notable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q9m-Xc-qo1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="SfU-oX-GyM">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.92941176469999998" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="KbQ-0h-LVk" firstAttribute="trailing" secondItem="SfU-oX-GyM" secondAttribute="trailing" id="B4y-xE-dQ8"/>
+                            <constraint firstItem="KbQ-0h-LVk" firstAttribute="bottom" secondItem="SfU-oX-GyM" secondAttribute="bottom" id="O4V-3D-hdW"/>
+                            <constraint firstItem="SfU-oX-GyM" firstAttribute="top" secondItem="KbQ-0h-LVk" secondAttribute="top" id="Qsa-tV-L5V"/>
+                            <constraint firstItem="SfU-oX-GyM" firstAttribute="leading" secondItem="KbQ-0h-LVk" secondAttribute="leading" id="Vl6-L4-QUW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KbQ-0h-LVk"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sharing Notes" id="3r4-V5-DBQ">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="a06-Ig-AfI">
+                            <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="editCancelExecute:" destination="Hte-Mf-9HW" id="qpP-Dg-BMU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Stop Share" id="KGD-vX-Grc">
+                            <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="stopShareExecute:" destination="Hte-Mf-9HW" id="Ntx-ac-ivI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="editCancelItem" destination="a06-Ig-AfI" id="V4E-Et-7rg"/>
+                        <outlet property="sharingNotesTable" destination="SfU-oX-GyM" id="feH-Py-0Sz"/>
+                        <outlet property="stopShareItem" destination="KGD-vX-Grc" id="IIn-hL-SPU"/>
+                        <segue destination="6qG-Xc-rXb" kind="show" identifier="sharingToEditor" id="vQK-Kf-Z1f"/>
+                        <segue destination="5LS-cS-eXZ" kind="show" identifier="toStopShare" id="ckI-Pu-tZW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AZX-Z2-bah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-960.86956521739137" y="6.6964285714285712"/>
+        </scene>
+        <!--Sharing Note EditorVC-->
+        <scene sceneID="RXz-dp-a8W">
+            <objects>
+                <viewController id="6qG-Xc-rXb" customClass="SharingNoteEditorVC" customModule="Notable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lEN-zi-tJe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vu9-Os-Nac">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <connections>
+                                    <segue destination="wry-UN-8wq" kind="embed" identifier="sharingParentToEditor" id="LaW-HZ-EHD"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Cgi-8w-SAo" firstAttribute="trailing" secondItem="Vu9-Os-Nac" secondAttribute="trailing" id="2LX-rr-1Ur"/>
+                            <constraint firstItem="Cgi-8w-SAo" firstAttribute="bottom" secondItem="Vu9-Os-Nac" secondAttribute="bottom" id="bmF-KP-D82"/>
+                            <constraint firstItem="Vu9-Os-Nac" firstAttribute="top" secondItem="Cgi-8w-SAo" secondAttribute="top" id="j5Y-OM-5Dc"/>
+                            <constraint firstItem="Vu9-Os-Nac" firstAttribute="leading" secondItem="Cgi-8w-SAo" secondAttribute="leading" id="xJz-bQ-Pvw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Cgi-8w-SAo"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Hjz-tc-Bky"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fWo-ce-JOL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-91" y="7"/>
+        </scene>
+        <!--Select...-->
+        <scene sceneID="gN5-li-BMW">
+            <objects>
+                <viewController id="5LS-cS-eXZ" customClass="StopShareViewController" customModule="Notable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P5e-Xx-QkY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Eqk-xU-Uby">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.92941176469999998" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="M9E-Rk-Acr" firstAttribute="bottom" secondItem="Eqk-xU-Uby" secondAttribute="bottom" id="8Aj-xP-cBf"/>
+                            <constraint firstItem="Eqk-xU-Uby" firstAttribute="top" secondItem="M9E-Rk-Acr" secondAttribute="top" id="AwW-hM-1U3"/>
+                            <constraint firstItem="M9E-Rk-Acr" firstAttribute="trailing" secondItem="Eqk-xU-Uby" secondAttribute="trailing" id="Bvj-Bc-3hk"/>
+                            <constraint firstItem="Eqk-xU-Uby" firstAttribute="leading" secondItem="M9E-Rk-Acr" secondAttribute="leading" id="swq-P5-tgL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="M9E-Rk-Acr"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select..." id="vdh-hU-rxN">
+                        <barButtonItem key="rightBarButtonItem" title="Stop Share" id="NGA-zH-D4X">
+                            <color key="tintColor" red="0.23921568630000001" green="0.25098039220000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="stopShareExecute:" destination="5LS-cS-eXZ" id="gXs-Wn-ctI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sharingContactsTable" destination="Eqk-xU-Uby" id="RFe-vf-fqo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gM8-Dg-5Qa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-91" y="739"/>
+        </scene>
+        <!--NoteEditor-->
+        <scene sceneID="rL1-AT-Vd1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NoteEditor" id="wry-UN-8wq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K5j-fB-aXQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="517" y="7"/>
+        </scene>
+        <!--Sharing-->
+        <scene sceneID="MPM-EB-3Aj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Wf-tr-9nD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Sharing" image="arrowshape.turn.up.right.fill" catalog="system" id="v4c-ez-OoG"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="U3k-iK-81o">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.59999999999999998" green="0.92941176469999998" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Hte-Mf-9HW" kind="relationship" relationship="rootViewController" id="UZz-U0-grj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7MP-xf-Yo7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1871.0144927536232" y="6.6964285714285712"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrowshape.turn.up.right.fill" catalog="system" width="128" height="106"/>
+    </resources>
+</document>
