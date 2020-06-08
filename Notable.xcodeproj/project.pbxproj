@@ -56,6 +56,8 @@
 		04CAA4B1248D0E10009308E6 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA4B0248D0E10009308E6 /* ConfigurableCell.swift */; };
 		04CAA4B3248D1372009308E6 /* TableArrayDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA4B2248D1372009308E6 /* TableArrayDataProvider.swift */; };
 		04CAA4B7248D182C009308E6 /* TableArrayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA4B6248D182C009308E6 /* TableArrayDataSource.swift */; };
+		04CAA4B9248E188B009308E6 /* DeleteActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA4B8248E188B009308E6 /* DeleteActionSheet.swift */; };
+		04CAA4BB248E1C09009308E6 /* StoryboardRedirect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA4BA248E1C09009308E6 /* StoryboardRedirect.swift */; };
 		3561686BCF01DE3FE2931B1C /* Pods_Notable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5736CD651FAD929E0A55757F /* Pods_Notable.framework */; };
 		D26DFBF8986418748E1A7CD9 /* Pods_NotableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */; };
 /* End PBXBuildFile section */
@@ -124,6 +126,8 @@
 		04CAA4B0248D0E10009308E6 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		04CAA4B2248D1372009308E6 /* TableArrayDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableArrayDataProvider.swift; sourceTree = "<group>"; };
 		04CAA4B6248D182C009308E6 /* TableArrayDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableArrayDataSource.swift; sourceTree = "<group>"; };
+		04CAA4B8248E188B009308E6 /* DeleteActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteActionSheet.swift; sourceTree = "<group>"; };
+		04CAA4BA248E1C09009308E6 /* StoryboardRedirect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardRedirect.swift; sourceTree = "<group>"; };
 		272068D5FFCA98802C281274 /* Pods-NotableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotableTests.release.xcconfig"; path = "Target Support Files/Pods-NotableTests/Pods-NotableTests.release.xcconfig"; sourceTree = "<group>"; };
 		55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5736CD651FAD929E0A55757F /* Pods_Notable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,6 +270,8 @@
 			children = (
 				0454AA952483C339006B6F56 /* ToastMessage.swift */,
 				0454AA9C248524FF006B6F56 /* Spinner.swift */,
+				04CAA4B8248E188B009308E6 /* DeleteActionSheet.swift */,
+				04CAA4BA248E1C09009308E6 /* StoryboardRedirect.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -547,6 +553,8 @@
 				0454AA76247BCA45006B6F56 /* SignupViewController.swift in Sources */,
 				0454AA79247BCB70006B6F56 /* SignupViewModel.swift in Sources */,
 				0454AA80247EA317006B6F56 /* NoteTableViewCell.swift in Sources */,
+				04CAA4B9248E188B009308E6 /* DeleteActionSheet.swift in Sources */,
+				04CAA4BB248E1C09009308E6 /* StoryboardRedirect.swift in Sources */,
 				04CAA4B1248D0E10009308E6 /* ConfigurableCell.swift in Sources */,
 				0454AA9024826B42006B6F56 /* NoteEditorViewController.swift in Sources */,
 				04CAA4AD248D0C3B009308E6 /* TableDataProvider.swift in Sources */,

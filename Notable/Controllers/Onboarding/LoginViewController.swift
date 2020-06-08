@@ -33,13 +33,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController: AuthManagerDelegate {
     func didLoginUser() {
         Spinner.stop()
-        //TODO: module this one to a utility function
-        let storyBoard = UIStoryboard(name: "Main", bundle: .main)
-        
-        if let initialialVC = storyBoard.instantiateInitialViewController() {
-            self.view.window?.rootViewController = initialialVC
-            self.view.window?.makeKeyAndVisible()
-        }
+        redirectTo(storyboard: K.mainStoryboard, bundle: .main)
     }
     
     func didFailLoginUser() {

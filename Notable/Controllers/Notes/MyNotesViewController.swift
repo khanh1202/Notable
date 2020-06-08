@@ -76,17 +76,11 @@ class MyNotesViewController: UIViewController {
             return
         }
         
-        // TODO: if time is available, refactor the below to a utility method to display alert
-        let deleteAlert = UIAlertController(title: K.Messages.confirmShort, message: K.Messages.confirmDeleteNoteLong, preferredStyle: .actionSheet)
-        let deleteAction = UIAlertAction(title: K.Options.delete, style: .destructive) { (action) in
+        presentDeleteActionSheet(shortMessage: K.Messages.confirmShort, longMessage: K.Messages.confirmDeleteNoteLong) {
             Spinner.start()
             self.noteManager.deleteNotes(notes: self.selectedNotes)
             self.toggleEditMode()
         }
-        let cancelAction = UIAlertAction(title: K.Options.cancel, style: .cancel, handler: nil)
-        deleteAlert.addAction(deleteAction)
-        deleteAlert.addAction(cancelAction)
-        present(deleteAlert, animated: true, completion: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

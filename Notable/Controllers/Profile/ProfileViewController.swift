@@ -30,12 +30,7 @@ class ProfileViewController: UIViewController {
     @IBAction func logoutPressed(_ sender: UIButton) {
         authManager.logoutUser()
         
-        let storyBoard = UIStoryboard(name: "Login", bundle: nil)
-        
-        if let initialialVC = storyBoard.instantiateInitialViewController() {
-            self.view.window?.rootViewController = initialialVC
-            self.view.window?.makeKeyAndVisible()
-        }
+        redirectTo(storyboard: K.loginStoryBoard, bundle: nil)
     }
     
 }
