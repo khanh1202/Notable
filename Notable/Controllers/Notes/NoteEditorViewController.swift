@@ -49,7 +49,7 @@ class NoteEditorViewController: UIViewController {
 }
 
 extension NoteEditorViewController: NoteManagerDelegate {
-    func didFinishSaveNote() {
+    func didFinishAndReadyBack() {
         Spinner.stop()
         navigationController?.popToRootViewController(animated: true)
     }

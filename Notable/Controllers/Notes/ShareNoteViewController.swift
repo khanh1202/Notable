@@ -52,7 +52,7 @@ extension ShareNoteViewController: ContactManagerDelegate {
 }
 
 extension ShareNoteViewController: NoteManagerDelegate {
-    func didFinishSharingNotes() {
+    func didFinishAndReadyBack() {
         Spinner.stop()
         navigationController?.popToRootViewController(animated: true)
     }

@@ -12,17 +12,13 @@ import Parse
 protocol ContactManagerDelegate {
     func didGetContactsFromServer(_ contacts: [PFUser]?)
     func didFinishRemoveContacts()
-    func didFinishSearchingUsers(users: [PFUser]?)
-    func didAddUsersToContacts()
-    func didFinishUnshareToUsers()
+    func didFinishAndReadyBack()
 }
 
 extension ContactManagerDelegate {
     func didGetContactsFromServer(_ contacts: [PFUser]?) {}
     func didFinishRemoveContacts() {}
-    func didFinishSearchingUsers(users: [PFUser]?) {}
-    func didAddUsersToContacts() {}
-    func didFinishUnshareToUsers() {}
+    func didFinishAndReadyBack() {}
 }
 
 struct ContactManager {
@@ -72,7 +68,7 @@ struct ContactManager {
                 if let error = error {
                     print(error.localizedDescription)
                 } else {
-                    self.delegate?.didFinishSearchingUsers(users: potentialContacts as? [PFUser])
+                    self.delegate?.didGetContactsFromServer(potentialContacts as? [PFUser])
                 }
             }
         }
@@ -86,7 +82,7 @@ struct ContactManager {
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                self.delegate?.didAddUsersToContacts()
+                self.delegate?.didFinishAndReadyBack()
             }
         }
     }
@@ -112,7 +108,7 @@ struct ContactManager {
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                self.delegate?.didFinishUnshareToUsers()
+                self.delegate?.didFinishAndReadyBack()
             }
         }
     }

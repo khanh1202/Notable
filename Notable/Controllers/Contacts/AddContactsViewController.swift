@@ -36,19 +36,19 @@ class AddContactsViewController: MultiSelectTable<PFUser, ContactTableViewCell> 
 }
 
 extension AddContactsViewController: ContactManagerDelegate {
-    func didFinishSearchingUsers(users: [PFUser]?) {
-        guard let users = users, users.count > 0 else {
+    func didGetContactsFromServer(_ contacts: [PFUser]?) {
+        guard let contacts = contacts, contacts.count > 0 else {
             Spinner.stop()
             showToast(message: "No user found", font: UIFont.systemFont(ofSize: 15))
             return
         }
         
-        datasource = ContactsDataSource(tableView: usersTableView, items: users)
+        datasource = ContactsDataSource(tableView: usersTableView, items: contacts)
         usersTableView.reloadData()
         Spinner.stop()
     }
     
-    func didAddUsersToContacts() {
+    func didFinishAndReadyBack() {
         Spinner.stop()
         navigationController?.popToRootViewController(animated: true)
     }

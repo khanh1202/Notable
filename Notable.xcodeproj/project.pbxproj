@@ -210,10 +210,10 @@
 		0454AA70247B6FEF006B6F56 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0454AA6C247B685F006B6F56 /* PaddingTextField.swift */,
 				04CAA4A2248A7313009308E6 /* Sharing */,
 				04CAA49B248A3E0C009308E6 /* Shared */,
 				0454AAA324864CE9006B6F56 /* Contacts */,
-				0454AA6C247B685F006B6F56 /* PaddingTextField.swift */,
 				0454AAA124864CCD006B6F56 /* Onboarding */,
 				0454AAA224864CDC006B6F56 /* Profile */,
 				0454AAA024864C64006B6F56 /* Notes */,

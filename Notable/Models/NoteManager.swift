@@ -11,16 +11,14 @@ import Parse
 
 protocol NoteManagerDelegate {
     func didGetNotesFromServer(_ notes: [Note])
-    func didFinishSaveNote()
+    func didFinishAndReadyBack()
     func didFinishDeletingNotes()
-    func didFinishSharingNotes()
 }
 
 extension NoteManagerDelegate {
     func didGetNotesFromServer(_ notes: [Note]) {}
-    func didFinishSaveNote() {}
+    func didFinishAndReadyBack() {}
     func didFinishDeletingNotes() {}
-    func didFinishSharingNotes() {}
 }
 
 struct NoteManager {
@@ -115,7 +113,7 @@ struct NoteManager {
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                self.delegate?.didFinishSaveNote()
+                self.delegate?.didFinishAndReadyBack()
             }
         }
     }
@@ -135,7 +133,7 @@ struct NoteManager {
         }
         
         dispatchGroup.notify(queue: .main) {
-            self.delegate?.didFinishSharingNotes()
+            self.delegate?.didFinishAndReadyBack()
         }
     }
 }

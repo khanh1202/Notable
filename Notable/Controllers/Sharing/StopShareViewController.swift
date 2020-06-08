@@ -44,7 +44,7 @@ extension StopShareViewController: ContactManagerDelegate {
         Spinner.stop()
     }
     
-    func didFinishUnshareToUsers() {
+    func didFinishAndReadyBack() {
         Spinner.stop()
         navigationController?.popToRootViewController(animated: true)
     }
