@@ -9,14 +9,12 @@
 import UIKit
 import Parse
 
-class ShareNoteViewController: UIViewController {
+class ShareNoteViewController: MultiSelectTable<PFUser, ContactTableViewCell> {
 
     @IBOutlet weak var contactsTableView: UITableView!
     var notes: [Note]!
-    private var datasource: ContactsDataSource!
     private var contactManager = ContactManager()
     private var noteManager = NoteManager()
-    private var selectedContacts: [PFUser] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         contactManager.delegate = self
@@ -34,33 +32,15 @@ class ShareNoteViewController: UIViewController {
     
 
     @IBAction func shareExecute(_ sender: Any) {
-        guard selectedContacts.count > 0 else {
+        guard selectedItems.count > 0 else {
             showToast(message: K.Messages.selectContact, font: UIFont.systemFont(ofSize: 15))
             return
         }
         
         Spinner.start()
-        noteManager.shareNotesToUsers(notes: notes, users: selectedContacts)
+        noteManager.shareNotesToUsers(notes: notes, users: selectedItems)
     }
     
-}
-
-extension ShareNoteViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let selectedContact = datasource.item(at: indexPath) else {
-            return
-        }
-        
-        selectedContacts.append(selectedContact)
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        guard let deselectedContact = datasource.item(at: indexPath), let deselectedIndex = selectedContacts.firstIndex(of: deselectedContact) else {
-            return
-        }
-        
-        selectedContacts.remove(at: deselectedIndex)
-    }
 }
 
 extension ShareNoteViewController: ContactManagerDelegate {

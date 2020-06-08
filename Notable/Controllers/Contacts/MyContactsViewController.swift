@@ -9,14 +9,12 @@
 import UIKit
 import Parse
 
-class MyContactsViewController: UIViewController {
+class MyContactsViewController: MultiSelectTable<PFUser, ContactTableViewCell> {
 
     @IBOutlet weak var contactTableView: UITableView!
     @IBOutlet weak var editCancelItem: UIBarButtonItem!
     @IBOutlet weak var addDeleteItem: UIBarButtonItem!
-    private var datasource: ContactsDataSource!
     private var contactManager = ContactManager()
-    private var selectedContacts: [PFUser] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +42,7 @@ class MyContactsViewController: UIViewController {
         contactTableView.setEditing(!contactTableView.isEditing, animated: true)
         
         updateBarItems()
-        selectedContacts = []
+        selectedItems = []
     }
     
     func updateBarItems() {
@@ -61,42 +59,16 @@ class MyContactsViewController: UIViewController {
             return
         }
         
-        guard selectedContacts.count > 0 else {
+        guard selectedItems.count > 0 else {
             showToast(message: K.Messages.selectContact, font: UIFont.systemFont(ofSize: 15))
             return
         }
         
         presentDeleteActionSheet(shortMessage: K.Messages.confirmShort, longMessage: K.Messages.confirmDeleteContactLong) {
             Spinner.start()
-            self.contactManager.deleteContacts(contacts: self.selectedContacts)
+            self.contactManager.deleteContacts(contacts: self.selectedItems)
             self.toggleEditMode()
         }
-    }
-}
-
-extension MyContactsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard tableView.isEditing else {
-            return
-        }
-        
-        guard let selectedContact = datasource.item(at: indexPath) else {
-            return
-        }
-        
-        selectedContacts.append(selectedContact)
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        guard tableView.isEditing else {
-            return
-        }
-        
-        guard let deselectedContact = datasource.item(at: indexPath), let deselectedIndex = selectedContacts.firstIndex(of: deselectedContact) else {
-            return
-        }
-        
-        selectedContacts.remove(at: deselectedIndex)
     }
 }
 

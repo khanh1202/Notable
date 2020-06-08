@@ -9,13 +9,11 @@
 import UIKit
 import Parse
 
-class AddContactsViewController: UIViewController {
+class AddContactsViewController: MultiSelectTable<PFUser, ContactTableViewCell> {
 
     @IBOutlet weak var nameSearchBar: UISearchBar!
     @IBOutlet weak var usersTableView: UITableView!
-    private var datasource: ContactsDataSource!
     private var contactManager = ContactManager()
-    private var selectedUsers: [PFUser] = []
     private var searchingTerm: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +24,13 @@ class AddContactsViewController: UIViewController {
     }
     
     @IBAction func addExecute(_ sender: Any) {
-        guard selectedUsers.count > 0 else {
+        guard selectedItems.count > 0 else {
             showToast(message: K.Messages.selectContact, font: UIFont.systemFont(ofSize: 15))
             return
         }
         
         Spinner.start()
-        contactManager.addUsersToContacts(newContacts: selectedUsers)
+        contactManager.addUsersToContacts(newContacts: selectedItems)
     }
 
 }
@@ -53,28 +51,6 @@ extension AddContactsViewController: ContactManagerDelegate {
     func didAddUsersToContacts() {
         Spinner.stop()
         navigationController?.popToRootViewController(animated: true)
-    }
-}
-
-extension AddContactsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard tableView.isEditing else { return }
-        
-        guard let selectedUser = datasource.item(at: indexPath) else {
-            return
-        }
-        
-        selectedUsers.append(selectedUser)
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        guard tableView.isEditing else { return }
-        
-        guard let deselectedUser = datasource.item(at: indexPath), let deselectedIndex = selectedUsers.firstIndex(of: deselectedUser) else {
-            return
-        }
-        
-        selectedUsers.remove(at: deselectedIndex)
     }
 }
 

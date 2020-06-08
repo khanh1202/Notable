@@ -9,20 +9,19 @@
 import UIKit
 import Parse
 
-class MyNotesViewController: UIViewController {
+class MyNotesViewController: MultiSelectTable<Note, NoteTableViewCell> {
 
     @IBOutlet weak var notesTableView: UITableView!
     @IBOutlet weak var shareBarItem: UIBarButtonItem!
     @IBOutlet weak var leftBarItem: UIBarButtonItem!
     @IBOutlet weak var rightBarItem: UIBarButtonItem!
-    private var datasource: NotesDataSource!
     private var noteManager = NoteManager()
-    private var selectedNotes: [Note] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         noteManager.delegate = self
         notesTableView.delegate = self
+        selectItemClosure = displaySelectedNote(at:)
         updateBarItems()
     }
     
@@ -43,7 +42,7 @@ class MyNotesViewController: UIViewController {
         notesTableView.setEditing(!notesTableView.isEditing, animated: true)
         
         updateBarItems()
-        selectedNotes = []
+        selectedItems = []
     }
     
     func updateBarItems() {
@@ -57,7 +56,7 @@ class MyNotesViewController: UIViewController {
     }
     
     @IBAction func shareExecute(_ sender: Any) {
-        guard selectedNotes.count > 0 else {
+        guard selectedItems.count > 0 else {
             showToast(message: K.Messages.selectNote, font: UIFont.systemFont(ofSize: 15))
             return
         }
@@ -71,14 +70,14 @@ class MyNotesViewController: UIViewController {
             return
         }
         
-        guard selectedNotes.count > 0 else {
+        guard selectedItems.count > 0 else {
             showToast(message: K.Messages.selectNote, font: UIFont.systemFont(ofSize: 15))
             return
         }
         
         presentDeleteActionSheet(shortMessage: K.Messages.confirmShort, longMessage: K.Messages.confirmDeleteNoteLong) {
             Spinner.start()
-            self.noteManager.deleteNotes(notes: self.selectedNotes)
+            self.noteManager.deleteNotes(notes: self.selectedItems)
             self.toggleEditMode()
         }
     }
@@ -90,12 +89,17 @@ class MyNotesViewController: UIViewController {
             destinationVC.mode = .adding
         case K.Segues.toShareContacts:
             let destinationVC = segue.destination as! ShareNoteViewController
-            destinationVC.notes = selectedNotes
+            destinationVC.notes = selectedItems
         default:
             let destinationVC = segue.destination as! MyNotesEditorViewController
             destinationVC.note = datasource.selectedItem
             destinationVC.mode = .editing
         }
+    }
+    
+    func displaySelectedNote(at indexPath: IndexPath) {
+        performSegue(withIdentifier: K.Segues.noteToEditor, sender: self)
+        notesTableView.deselectRow(at: indexPath, animated: true)
     }
 
 }
@@ -111,33 +115,5 @@ extension MyNotesViewController: NoteManagerDelegate {
         noteManager.getNotesOwnedByUser()
         showToast(message: K.Messages.successfulDeleteContact, font: UIFont.systemFont(ofSize: 15))
     }
-}
-
-extension MyNotesViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let selectedNote = datasource.item(at: indexPath) else {
-            return
-        }
-        
-        if !tableView.isEditing {
-            performSegue(withIdentifier: K.Segues.noteToEditor, sender: self)
-            tableView.deselectRow(at: indexPath, animated: true)
-        } else {
-            selectedNotes.append(selectedNote)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        guard tableView.isEditing else {
-            return
-        }
-        
-        guard let deselectedNote = datasource.item(at: indexPath), let deselectedIndex = selectedNotes.firstIndex(of: deselectedNote) else {
-            return
-        }
-        
-        selectedNotes.remove(at: deselectedIndex)
-    }
-
 }
 

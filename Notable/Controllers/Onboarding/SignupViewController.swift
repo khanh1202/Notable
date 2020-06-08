@@ -31,7 +31,7 @@ class SignupViewController: UIViewController {
     func initViewModel() {
         viewModel.successfulSignupClosure = { [weak self] () in
             Spinner.stop()
-            redirectTo(storyboard: K.mainStoryboard, bundle: .main)
+            self?.redirectTo(storyboard: K.mainStoryboard, bundle: .main)
         }
         
         viewModel.failSignupClosure = { [weak self] (message) in

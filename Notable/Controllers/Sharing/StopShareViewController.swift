@@ -9,12 +9,10 @@
 import UIKit
 import Parse
 
-class StopShareViewController: UIViewController {
+class StopShareViewController: MultiSelectTable<PFUser, ContactTableViewCell> {
 
     @IBOutlet weak var sharingContactsTable: UITableView!
-    private var datasource: ContactsDataSource!
     private var contactManager = ContactManager()
-    private var selectedContacts: [PFUser] = []
     var note: Note!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,30 +28,12 @@ class StopShareViewController: UIViewController {
     
 
     @IBAction func stopShareExecute(_ sender: Any) {
-        guard selectedContacts.count > 0 else {
+        guard selectedItems.count > 0 else {
             showToast(message: K.Messages.selectContact, font: UIFont.systemFont(ofSize: 15))
             return
         }
         
-        contactManager.unshareToUsers(for: note, to: selectedContacts)
-    }
-}
-
-extension StopShareViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let selectedContact = datasource.item(at: indexPath) else {
-            return
-        }
-        
-        selectedContacts.append(selectedContact)
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        guard let deselectedContact = datasource.item(at: indexPath), let deselectedIndex = selectedContacts.firstIndex(of: deselectedContact) else {
-            return
-        }
-        
-        selectedContacts.remove(at: deselectedIndex)
+        contactManager.unshareToUsers(for: note, to: selectedItems)
     }
 }
 
