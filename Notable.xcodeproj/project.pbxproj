@@ -59,6 +59,8 @@
 		04CAA4B9248E188B009308E6 /* DeleteActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA4B8248E188B009308E6 /* DeleteActionSheet.swift */; };
 		04CAA4BB248E1C09009308E6 /* StoryboardRedirect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA4BA248E1C09009308E6 /* StoryboardRedirect.swift */; };
 		04CAA4BD248E20E9009308E6 /* MultiSelectTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA4BC248E20E9009308E6 /* MultiSelectTable.swift */; };
+		04CAA4C32491165A009308E6 /* SentimentClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA4C22491165A009308E6 /* SentimentClassifier.mlmodel */; };
+		04CAA4C524911690009308E6 /* ClassifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CAA4C424911690009308E6 /* ClassifierManager.swift */; };
 		3561686BCF01DE3FE2931B1C /* Pods_Notable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5736CD651FAD929E0A55757F /* Pods_Notable.framework */; };
 		D26DFBF8986418748E1A7CD9 /* Pods_NotableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */; };
 /* End PBXBuildFile section */
@@ -130,6 +132,8 @@
 		04CAA4B8248E188B009308E6 /* DeleteActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteActionSheet.swift; sourceTree = "<group>"; };
 		04CAA4BA248E1C09009308E6 /* StoryboardRedirect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardRedirect.swift; sourceTree = "<group>"; };
 		04CAA4BC248E20E9009308E6 /* MultiSelectTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectTable.swift; sourceTree = "<group>"; };
+		04CAA4C22491165A009308E6 /* SentimentClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SentimentClassifier.mlmodel; sourceTree = "<group>"; };
+		04CAA4C424911690009308E6 /* ClassifierManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifierManager.swift; sourceTree = "<group>"; };
 		272068D5FFCA98802C281274 /* Pods-NotableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotableTests.release.xcconfig"; path = "Target Support Files/Pods-NotableTests/Pods-NotableTests.release.xcconfig"; sourceTree = "<group>"; };
 		55F7FB7DD99EA553D6B2D735 /* Pods_NotableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5736CD651FAD929E0A55757F /* Pods_Notable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +185,7 @@
 		0454AA49247A88C2006B6F56 /* Notable */ = {
 			isa = PBXGroup;
 			children = (
+				04CAA4C22491165A009308E6 /* SentimentClassifier.mlmodel */,
 				0454AA4A247A88C2006B6F56 /* AppDelegate.swift */,
 				0454AA4C247A88C2006B6F56 /* SceneDelegate.swift */,
 				04CAA4A9248D0B59009308E6 /* Abstraction */,
@@ -247,6 +252,7 @@
 				0454AA9E248648D2006B6F56 /* User.swift */,
 				0454AAAA24867780006B6F56 /* ContactsDataSource.swift */,
 				0454AAAC248681C6006B6F56 /* ContactManager.swift */,
+				04CAA4C424911690009308E6 /* ClassifierManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -549,6 +555,7 @@
 				04CAA4AB248D0B75009308E6 /* ReusableCell.swift in Sources */,
 				0454AA6F247B6F1A006B6F56 /* Constants.swift in Sources */,
 				0454AA9224828808006B6F56 /* NoteEditorMode.swift in Sources */,
+				04CAA4C32491165A009308E6 /* SentimentClassifier.mlmodel in Sources */,
 				0454AA962483C339006B6F56 /* ToastMessage.swift in Sources */,
 				04CAA49D248A3E37009308E6 /* SharedNotesViewController.swift in Sources */,
 				04CAA4AF248D0D01009308E6 /* TableDataSource.swift in Sources */,
@@ -567,6 +574,7 @@
 				0454AA9F248648D2006B6F56 /* User.swift in Sources */,
 				0454AA74247B70D2006B6F56 /* AuthManager.swift in Sources */,
 				0454AA4F247A88C2006B6F56 /* LoginViewController.swift in Sources */,
+				04CAA4C524911690009308E6 /* ClassifierManager.swift in Sources */,
 				0454AA89248101BA006B6F56 /* NotesDataSource.swift in Sources */,
 				04CAA4B3248D1372009308E6 /* TableArrayDataProvider.swift in Sources */,
 				0454AA6D247B685F006B6F56 /* PaddingTextField.swift in Sources */,

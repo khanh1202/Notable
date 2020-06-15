@@ -96,6 +96,12 @@ struct NoteManager {
             newNote.author = PFUser.current()
             saveNote(note: newNote)
         }
+        
+        guard let newContent = newContent else {
+            return
+        }
+        
+        ClassifierManager.predictSentiment(of: newContent)
     }
     
     func deleteNotes(notes: [Note]) {
